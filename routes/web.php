@@ -15,6 +15,10 @@ use App\Http\Controllers\StudentController;
 |
 */
 
+Route::get('/foo', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
