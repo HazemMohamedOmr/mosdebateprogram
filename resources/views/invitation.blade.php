@@ -106,7 +106,7 @@
                         <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         <div class="form-floating">
                             <input type="email" id="email" name="email" value="{{ old('email') }}" class="form-control" placeholder="البريد الإلكترونى" required>
-                            <label for="email">البريد الإلكترونى *</label>
+                            <label for="email">البريد الإلكترونى <span class="mandatory">*</span></label>
                         </div>
                         <div class="invalid-feedback text-right">الرجاء إدخال البريد الإلكترونى.</div>
                     </div>
