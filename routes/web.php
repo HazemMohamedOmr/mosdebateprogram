@@ -27,6 +27,9 @@ Route::prefix('visitor-invitation')->group(function () {
     Route::get('/success', [InvitationController::class, 'success'])->name('visitor-invitation-success');
 });
 
+
+Route::get('visitor/{uuid}', [InvitationController::class, 'index'])->name('visitor-invitation-details');
+
 Route::prefix('team-invitation')->group(function () {
     Route::get('/', [StudentController::class, 'index'])->name('team-invitation-form');
 

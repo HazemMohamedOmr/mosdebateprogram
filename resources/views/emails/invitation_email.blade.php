@@ -20,7 +20,7 @@
 <p style="text-align: left; font-size: 1rem;">نراكم قريبًا!</p>
 
 <div style="text-align: center !important;">
-    <button style="display: inline-block;
+    <a style="display: inline-block;
     padding: 0.5rem 1rem;
     font-size: 1.25rem;
     font-weight: 400;
@@ -37,7 +37,7 @@
     border-radius: 0.5rem;
     background-color: #0d6efd;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-">رابط الدعوة</button>
+" target="_blank" href="{{ $link }}">رابط الدعوة</a>
 </div>
 
 </body>
