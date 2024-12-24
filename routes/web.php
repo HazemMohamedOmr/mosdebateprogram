@@ -26,7 +26,7 @@ Route::prefix('visitor-invitation')->group(function () {
 
     Route::get('/success', [InvitationController::class, 'success'])->name('visitor-invitation-success');
 
-    Route::get('/qrcode/{uuid}', [InvitationController::class, 'index'])->name('visitor-invitation-qrcode');
+    Route::get('/qrcode/{uuid}', [InvitationController::class, 'qrcode'])->name('visitor-invitation-qrcode');
 });
 
 

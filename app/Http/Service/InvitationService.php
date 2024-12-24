@@ -7,6 +7,7 @@ use App\Models\Invitations;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class InvitationService
 {
@@ -54,6 +55,22 @@ class InvitationService
         }
 
         $invitation->save();
+    }
+
+    public function qrcode($uuid)
+    {
+        $image = $this->generateBase64QrCode($uuid);
+
+        return view('invitation.qrcode', compact('image'));
+    }
+
+    public function generateBase64QrCode($text, $size = 200)
+    {
+        $data = QrCode::size($size)
+            ->format('svg')
+            ->generate($text);
+
+        return $data;
     }
 
 }
