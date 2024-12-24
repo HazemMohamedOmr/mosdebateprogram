@@ -19,20 +19,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teamRegistration', function () {
-    return view('teamRegistration');
+Route::prefix('visitor-invitation')->group(function () {
+    Route::get('/', [InvitationController::class, 'index'])->name('visitor-invitation-form');
+
+    Route::post('/', [InvitationController::class, 'store'])->name('visitor-invitation-submit');
+
+    Route::get('/success', [InvitationController::class, 'success'])->name('visitor-invitation-success');
 });
 
-Route::get('/success', function () {
-    return view('success');
-})->name('success');
+Route::prefix('team-invitation')->group(function () {
+    Route::get('/', [StudentController::class, 'index'])->name('team-invitation-form');
 
-Route::get('visitor-invitation', [InvitationController::class, 'index'])->name('visitor-invitation-form');
+    Route::post('/', [StudentController::class, 'store'])->name('team-invitation-submit');
 
-Route::post('visitor-invitation', [InvitationController::class, 'store'])->name('visitor-invitation-submit');
-
-Route::post('teamRegistration/form-student', [StudentController::class, 'store'])->name('form.student');
-
+    Route::get('/success', [StudentController::class, 'success'])->name('team-invitation-success');
+});
 
 
 //TODO 2 or 1 routes for displaying info

@@ -9,7 +9,7 @@ class InvitationService
 {
     public function index()
     {
-        return view('invitation');
+        return view('invitation.visitor-registration');
     }
 
     public function store($request)
@@ -27,6 +27,13 @@ class InvitationService
         Invitations::create($validatedData);
 
         // Redirect to success page
-        return redirect()->route('success')->with('success', 'Form submitted successfully!');
+        return redirect()->route('visitor-invitation-success')->with('success', 'Form submitted successfully!');
     }
+
+
+    public function success()
+    {
+        return view('invitation.success');
+    }
+
 }

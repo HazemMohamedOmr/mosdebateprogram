@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('invitation.layouts.app')
 
 @section('content')
 
@@ -121,7 +121,7 @@
                 @for ($i = 1; $i <= 4; $i++)
                         <h4 class="text-right mb-4">العضو الأول</h4>
 
-                        @include('partials.student_fields', ['studentIndex' => $i]) <!-- Include a student fields partial -->
+                        @include('invitation.partials.student_fields', ['studentIndex' => $i]) <!-- Include a student fields partial -->
                 @endfor
 
                 <!-- Heard About Section -->
