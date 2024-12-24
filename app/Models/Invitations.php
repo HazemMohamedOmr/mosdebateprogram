@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -29,10 +30,11 @@ class Invitations extends Model
         });
     }
 
-    public static function generateUniqueKey()
+    public static function generateUniqueKey(): string
     {
         do {
-            $key = Str::random(16);
+            $key = Uuid::uuid() . Str::random(16);
+            $key = strtoupper($key);
         } while (self::where('invitation_key', $key)->exists());
 
         return $key;
