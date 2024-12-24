@@ -36,4 +36,9 @@ class InvitationController extends Controller
         return $this->invitationService->qrcode($uuid);
     }
 
+    public function show(Request $request, $uuid)
+    {
+        return $this->invitationService->show($uuid);
+    }
+
 }

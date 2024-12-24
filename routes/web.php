@@ -39,4 +39,7 @@ Route::prefix('team-invitation')->group(function () {
 });
 
 
+Route::get('visitor/{uuid}', [InvitationController::class, 'show'])->name('visitor-invitation-show');
+
+
 //TODO 2 or 1 routes for displaying info

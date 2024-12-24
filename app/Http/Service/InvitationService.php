@@ -59,18 +59,31 @@ class InvitationService
 
     public function qrcode($uuid)
     {
-        $image = $this->generateBase64QrCode($uuid);
+        $invitation = Invitations::where('invitation_key', $uuid)->first();
 
-        return view('invitation.qrcode', compact('image'));
+        if (isset($invitation)){
+            $url = route('visitor-invitation-show', ['uuid' => $uuid]);
+            $image = $this->generateBase64QrCode($url);
+
+            return view('invitation.qrcode', compact('image'));
+        }
+
+        return view('invitation.not-found');
     }
 
     public function generateBase64QrCode($text, $size = 200)
     {
-        $data = QrCode::size($size)
+        return QrCode::size($size)
             ->format('svg')
             ->generate($text);
+    }
 
-        return $data;
+    public function show($uuid)
+    {
+        $url = route('visitor-invitation-show', ['uuid' => $uuid]);
+        $image = $this->generateBase64QrCode($url);
+
+        return view('invitation.qrcode', compact('image'));
     }
 
 }
