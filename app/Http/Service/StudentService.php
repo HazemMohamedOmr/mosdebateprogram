@@ -42,23 +42,6 @@ class StudentService
         return redirect()->route('team-invitation-success')->with('success', 'Form submitted successfully!');
     }
 
-    private function validateStudent(array $data)
-    {
-        return validator($data, [
-            'first_name' => 'required|string|max:255',
-            'second_name' => 'required|string|max:255',
-            'sur_name' => 'required|string|max:255',
-            'gender' => 'nullable|boolean',
-            'personal_photo' => 'nullable|file|image|max:2048',
-            'age_range' => 'required|string|max:255',
-            'national_id' => 'required|string|size:10',
-            'email' => 'required|email|unique:students|max:255',
-            'phone_number' => 'required|string|max:15',
-            'study_year_program' => 'required|string|max:255',
-            'experience' => 'nullable|string',
-        ])->validate();
-    }
-
     public function success()
     {
         return view('invitation.success');
