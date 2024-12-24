@@ -29,7 +29,7 @@ class InvitationEmail extends Mailable
     public function build()
     {
         $view = $this->is_visitor ? 'emails.invitation_email' : 'emails.team_invitation_email';
-        $link = $this->is_visitor ? route('visitor-invitation-details', ['uuid' => $this->invitation->invitation_key]) : null;
+        $link = $this->is_visitor ? route('visitor-invitation-qrcode', ['uuid' => $this->invitation->invitation_key]) : null;
         return $this->subject('دعوة دوري المناظرات')
             ->view($view)
             ->with('invitation', $this->invitation)
