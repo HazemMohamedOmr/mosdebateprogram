@@ -12,13 +12,15 @@ class InvitationEmail extends Mailable
     use Queueable, SerializesModels;
 
     public $data;
+    public $is_visitor;
 
     /**
      * Create a new message instance.
      */
-    public function __construct($data)
+    public function __construct($data, $is_visitor = 0)
     {
         $this->data = $data;
+        $this->is_visitor = $is_visitor;
     }
 
     /**
@@ -26,8 +28,9 @@ class InvitationEmail extends Mailable
      */
     public function build()
     {
+        $view = $this->is_visitor ? 'emails.invitation_email' : 'emails.team_invitation_email';
         return $this->subject('دعوة دوري المناظرات')
-            ->view('emails.invitation_email')
+            ->view($view)
             ->with('invitation', $this->data);
     }
 }

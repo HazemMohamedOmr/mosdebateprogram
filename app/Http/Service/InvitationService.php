@@ -46,7 +46,7 @@ class InvitationService
     private function sendEmail($invitation)
     {
         try {
-            Mail::to($invitation->email)->send(new InvitationEmail($invitation));
+            Mail::to($invitation->email)->send(new InvitationEmail($invitation, 1));
             $invitation->is_email_send = 1;
         } catch (\Exception $e) {
             Log::error($e);

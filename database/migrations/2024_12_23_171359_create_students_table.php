@@ -23,7 +23,7 @@ class CreateStudentsTable extends Migration
             $table->string('personal_photo')->nullable(); // Path to photo
             $table->string('age_range')->nullable();
             $table->string('national_id')->nullable();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone_number')->nullable();
             $table->string('study_year_program')->nullable();
             $table->text('experience')->nullable();
