@@ -1,0 +1,180 @@
+.primary-bg {
+    background-color: #edeff4 !important;
+}
+
+/*!* Form Styling *!*/
+/*.form-container {*/
+/*    background-color: #ffffff;*/
+/*    border-radius: 8px;*/
+/*    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);*/
+/*    padding: 20px 40px;*/
+/*}*/
+
+/*.form-control {*/
+/*    border: 1px solid #ddd;*/
+/*    border-radius: 5px;*/
+/*    font-size: 14px;*/
+/*    padding: 10px;*/
+/*    width: 100%;*/
+/*    direction: rtl; !* For proper Arabic alignment *!*/
+/*}*/
+
+/*.form-label {*/
+/*    font-size: 14px;*/
+/*    font-weight: bold;*/
+/*    text-align: right;*/
+/*    margin-bottom: 0;*/
+/*    margin-left: 10px;*/
+/*}*/
+
+/*!* Button *!*/
+/*.btn-primary {*/
+/*    background-color: #007bff;*/
+/*    border-color: #007bff;*/
+/*    padding: 10px 20px;*/
+/*    font-size: 16px;*/
+/*    border-radius: 5px;*/
+/*    width: 50%;*/
+/*}*/
+/*.btn-primary:hover {*/
+/*    background-color: #0056b3;*/
+/*    border-color: #0056b3;*/
+/*}*/
+
+/*BREAAAAAAAAAK*/
+
+@font-face {
+    font-family: 'FrutigerLTArabic'; /* The name you will use in your CSS */
+    src: url('/public/fonts/alfont_com_AlFont_com_Frutiger-LT-Arabic-55-Roman.ttf') format('truetype'); /* Path to the font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FrutigerLTArabicBold'; /* The name you will use in your CSS */
+    src: url('/public/fonts/alfont_com_AlFont_com_FrutigerLTArabic-65Bold-1.ttf') format('truetype'); /* Path to the font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'FrutigerLTArabicBoldish'; /* The name you will use in your CSS */
+    src: url('/public/fonts/alfont_com_AlFont_com_FrutigerLTArabic-75Black-1.ttf') format('truetype'); /* Path to the font file */
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1, h2, h3, h4, h5, h6, span, p, label {
+    font-family: FrutigerLTArabic, sans-serif;
+}
+
+.input-group > .form-floating:not(:first-child) > .form-control, .input-group > .form-floating:not(:first-child) > .form-select {
+    border-top-left-radius: 7px !important;
+    border-bottom-left-radius: 7px !important;
+}
+
+.mandatory {
+    color: red;
+}
+
+.input-group.has-validation > :nth-last-child(n+3):not(.dropdown-toggle):not(.dropdown-menu):not(.form-floating), .input-group.has-validation > .dropdown-toggle:nth-last-child(n+4), .input-group.has-validation > .form-floating:nth-last-child(n+3) > .form-control, .input-group.has-validation > .form-floating:nth-last-child(n+3) > .form-select {
+    border-top-right-radius: 7px !important;
+    border-bottom-right-radius: 7px !important;
+}
+
+.form-label {
+    font-weight: bold;
+    text-align: right;
+    margin-bottom: 0;
+    margin-left: 10px;
+}
+
+.form-control {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    padding: 10px;
+    width: 100%;
+    direction: rtl; /* Align for Arabic */
+}
+
+.form-check-label {
+    font-size: 14px;
+    margin-right: 8px;
+}
+
+.btn-primary {
+    background-color: #007bff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+}
+
+
+.iti__dropdown-content {
+    z-index: 999 !important;
+}
+
+.iti {
+    direction: rtl;
+    width: 100%;
+}
+
+.iti__flag-container {
+    text-align: right;
+}
+
+.phone_input{
+    padding: 1rem 88px 1rem 0.75rem !important;
+    direction: rtl !important;
+}
+
+.iti__selected-country-primary{
+    background-color: #f8f9fa !important;
+    border-left: 1px solid #dee2e6;
+}
+
+.iti__country-list {
+    direction: rtl;
+}
+
+.iti__selected-flag {
+    float: right; /* Move the flag to the right */
+}
+
+.separator{
+    border-bottom: #d9dde7 solid 2px;
+}
+
+.zoom-image {
+    transform: scale(1.15);
+}
+
+.img-logo{
+    max-width: 450px !important;
+    transform: scale(1.3);
+}
+
+.img-success{
+    max-width: 150px !important;
+}
+
+.success-text{
+    font-size: 4rem;
+    font-weight: bold;
+    color: #28a745;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    font-family: 'Poppins', sans-serif;
+    letter-spacing: 2px;
+    background: linear-gradient(45deg, #28a745, #32cd32, #7fff00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    margin: 20px;
+}
+
