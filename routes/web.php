@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('register')->group(function () {
+Route::prefix('attend')->group(function () {
     Route::get('/', [InvitationController::class, 'index'])->name('visitor-invitation-form');
 
     Route::post('/', [InvitationController::class, 'store'])->name('visitor-invitation-submit');
@@ -34,7 +34,7 @@ Route::prefix('register')->group(function () {
 });
 
 
-Route::prefix('attend')->group(function () {
+Route::prefix('register')->group(function () {
     Route::get('/', [StudentController::class, 'index'])->name('team-invitation-form');
 
     Route::post('/', [StudentController::class, 'store'])->name('team-invitation-submit');
