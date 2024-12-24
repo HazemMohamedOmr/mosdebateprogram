@@ -8,7 +8,7 @@
                 <div class="row">
                     <div
                         class="col-md-4 d-flex justify-content-center align-items-center order-2 order-md-1 mb-4 mb-md-0">
-                        <h1>
+                        <h1 style="font-weight: bold;">
                             نموذج تسجيل الفرق الجامعية
                         </h1>
                     </div>
