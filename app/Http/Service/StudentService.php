@@ -6,6 +6,7 @@ use App\Mail\InvitationEmail;
 use App\Models\Invitations;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class StudentService
@@ -55,7 +56,15 @@ class StudentService
 
     private function sendEmail($invitation)
     {
-        Mail::to($invitation->email)->send(new InvitationEmail($invitation));
+        try {
+            Mail::to($invitation->email)->send(new InvitationEmail($invitation));
+            $invitation->is_email_send = 1;
+        } catch (\Exception $e) {
+            Log::error($e);
+            $invitation->is_email_send = 0;
+        }
+
+        $invitation->save();
     }
 
 }
