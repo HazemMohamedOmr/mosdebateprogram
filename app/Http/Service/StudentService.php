@@ -31,12 +31,16 @@ class StudentService
         $invitation = Invitations::create($validatedInvitation);
 
         // Validate and create students
-        foreach ($request->input('students', []) as $studentData) {
+        foreach ($request->input('students', []) as $index => $studentData) {
 
-            // Handle personal photo upload
-            if (isset($studentData['personal_photo'])) {
-                $studentData['personal_photo'] = $studentData['personal_photo']->store('photos', 'public');
+            // Check if the file exists in the request
+            if ($request->hasFile("students.$index.personal_photo")) {
+                // Store the uploaded file and save the path
+                $studentData['personal_photo'] = $request->file("students.$index.personal_photo")->store('photos', 'public');
+            } else {
+                $studentData['personal_photo'] = null; // Handle case where no file is uploaded
             }
+
             $studentData['phone_number'] = '+966' . $studentData['phone_number'];
 
             // Link student to the invitation

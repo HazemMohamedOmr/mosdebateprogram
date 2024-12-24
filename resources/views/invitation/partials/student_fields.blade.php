@@ -44,7 +44,7 @@
             <select id="gender_{{ $studentIndex }}" name="students[{{ $studentIndex }}][gender]"  class="form-select" >
                 <option value="" disabled selected>الجنس</option>
                 <option value="0">ذكر</option>
-                <option value="1">إنتي</option>
+                <option value="1">إنثي</option>
 
             </select>
             <label for="gender_{{ $studentIndex }}">الجنس</label>
@@ -52,7 +52,13 @@
     </div>
 </div>
 
-<!-- Picture  -->
+
+<!-- Personal Photo -->
+<div class="form-group mb-3">
+    <label for="personal_photo_{{ $studentIndex }}" class="form-label">الصورة الشخصية *</label>
+    <input type="file" id="personal_photo_{{ $studentIndex }}" name="students[{{ $studentIndex }}][personal_photo]" class="form-control" required>
+    <small class="form-text text-muted text-right">يرجى رفع صورة بصيغة JPG أو PNG.</small>
+</div>
 <!-- TODO Picture html  -->
 
 <!-- Age Range -->
