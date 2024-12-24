@@ -31,7 +31,7 @@
             <h4 class="text-right mb-4">معلومات المسؤول الشخصية</h4>
 
             <!-- Form -->
-            <form id="invitationForm" action="{{ route('team-invitation-submit') }}" method="POST" novalidate>
+            <form id="invitationForm" action="{{ route('team-invitation-submit') }}" method="POST" enctype="multipart/form-data" novalidate>
                 @csrf
 
                 <!-- University Name -->
@@ -166,8 +166,9 @@
                     </div>
                     <!-- Input for "Other" option -->
                     <div id="heardOtherInputContainer" class="mt-2" style="display: none;">
-                        <input type="text" id="heardOtherInput" name="heard_about[]" class="form-control"
+                        <input type="text" id="heardOtherInput" class="form-control"
                                placeholder="أخرى">
+
                     </div>
                 </div>
 
@@ -200,7 +201,7 @@
                     </div>
                     <!-- Input for "Other" option -->
                     <div id="reasonOtherInputContainer" class="mt-2" style="display: none;">
-                        <input type="text" id="reasonOtherInput" name="reason_participation[]" class="form-control"
+                        <input type="text" id="reasonOtherInput" class="form-control"
                                placeholder="اخرى">
                     </div>
                 </div>

@@ -202,7 +202,7 @@
                     </div>
                     <!-- Input for "Other" option -->
                     <div id="heardOtherInputContainer" class="mt-2" style="display: none;">
-                        <input type="text" id="heardOtherInput" name="heard_about[]" class="form-control"
+                        <input type="text" id="heardOtherInput" class="form-control"
                                placeholder="أخرى">
                     </div>
                 </div>
@@ -236,7 +236,7 @@
                     </div>
                     <!-- Input for "Other" option -->
                     <div id="reasonOtherInputContainer" class="mt-2" style="display: none;">
-                        <input type="text" id="reasonOtherInput" name="reason_participation[]" class="form-control"
+                        <input type="text" id="reasonOtherInput" class="form-control"
                                placeholder="اخرى">
                     </div>
                 </div>
