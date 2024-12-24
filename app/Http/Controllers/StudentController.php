@@ -1,9 +1,9 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Http\Requests\StudentInvitationRequest;
 use App\Http\Service\StudentService;
-use App\Models\Invitations;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
@@ -21,7 +21,7 @@ class StudentController extends Controller
         return $this->studentService->index();
     }
 
-    public function store(Request $request): RedirectResponse
+    public function store(StudentInvitationRequest $request): RedirectResponse
     {
         return $this->studentService->store($request);
     }

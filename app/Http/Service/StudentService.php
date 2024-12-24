@@ -16,17 +16,7 @@ class StudentService
     public function store($request): RedirectResponse
     {
         // Validate main invitation data
-        $validatedInvitation = $request->validate([
-            'university_name' => 'required|string|max:255',
-            'first_name' => 'required|string|max:255',
-            'second_name' => 'required|string|max:255',
-            'email' => 'required|email|unique:invitations|max:255',
-            'phone_number' => 'required|string|max:15',
-            'university_specialization' => 'required|string|max:255',
-            'team_leader' => 'nullable|string|max:255',
-            'heard_about' => 'nullable|array',
-            'reason_participation' => 'nullable|array',
-        ]);
+        $validatedInvitation = $request->all();
 
         // Add type and encode nullable arrays
         $validatedInvitation['type'] = 1;
@@ -38,15 +28,14 @@ class StudentService
 
         // Validate and create students
         foreach ($request->input('students', []) as $studentData) {
-            $validatedStudent = $this->validateStudent($studentData);
 
             // Handle personal photo upload
             if (isset($studentData['personal_photo'])) {
-                $validatedStudent['personal_photo'] = $studentData['personal_photo']->store('photos', 'public');
+                $studentData['personal_photo'] = $studentData['personal_photo']->store('photos', 'public');
             }
 
             // Link student to the invitation
-            $invitation->students()->create($validatedStudent);
+            $invitation->students()->create($studentData);
         }
 
         // Redirect to success page
