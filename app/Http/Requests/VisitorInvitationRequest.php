@@ -29,7 +29,7 @@ class VisitorInvitationRequest extends FormRequest
             'sur_name' => 'required|string|max:255',
             'age_range' => 'required|string',
             'national_id' => 'required|string|size:10',
-            'email' => 'required|email|unique:invitations|max:255',
+            'email' => 'required|email|max:255',
             'phone_number' => 'required|string|max:15',
             'university_name' => 'nullable|string|max:255',
             'university_specialization' => 'nullable|string|max:255',
