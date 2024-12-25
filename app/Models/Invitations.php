@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
@@ -10,7 +11,8 @@ class Invitations extends Model
     protected $fillable = [
         'first_name', 'second_name', 'sur_name', 'age_range', 'national_id',
         'email', 'phone_number', 'university_name', 'university_specialization', 'team_leader',
-        'graduation_date', 'heard_about', 'reason_participation', 'attended', 'invitation_key', 'type'
+        'graduation_date', 'heard_about', 'reason_participation', 'attended', 'invitation_key', 'type',
+        'is_email_send',
     ];
 
     public function students()
@@ -28,10 +30,11 @@ class Invitations extends Model
         });
     }
 
-    public static function generateUniqueKey()
+    public static function generateUniqueKey(): string
     {
         do {
-            $key = Str::random(16);
+            $key = Uuid::uuid() . Str::random(16);
+            $key = strtoupper($key);
         } while (self::where('invitation_key', $key)->exists());
 
         return $key;

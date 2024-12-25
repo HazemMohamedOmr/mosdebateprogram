@@ -20,7 +20,7 @@ class CreateInvitationsTable extends Migration
             $table->string('sur_name')->nullable();
             $table->string('age_range')->nullable();
             $table->string('national_id')->nullable();
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('phone_number')->nullable();
             $table->string('university_name')->nullable();
             $table->string('university_specialization')->nullable();

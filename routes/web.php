@@ -15,24 +15,35 @@ use App\Http\Controllers\StudentController;
 |
 */
 
+Route::get('/foo', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+});
+
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/teamRegistration', function () {
-    return view('teamRegistration');
+Route::prefix('attend')->group(function () {
+    Route::get('/', [InvitationController::class, 'index'])->name('visitor-invitation-form');
+
+    Route::post('/', [InvitationController::class, 'store'])->name('visitor-invitation-submit');
+
+    Route::get('/success', [InvitationController::class, 'success'])->name('visitor-invitation-success');
+
+    Route::get('/qrcode/{uuid}', [InvitationController::class, 'qrcode'])->name('visitor-invitation-qrcode');
 });
 
-Route::get('/success', function () {
-    return view('success');
-})->name('success');
 
-Route::get('visitor-invitation', [InvitationController::class, 'index'])->name('visitor-invitation-form');
+Route::prefix('register')->group(function () {
+    Route::get('/', [StudentController::class, 'index'])->name('team-invitation-form');
 
-Route::post('visitor-invitation', [InvitationController::class, 'store'])->name('visitor-invitation-submit');
+    Route::post('/', [StudentController::class, 'store'])->name('team-invitation-submit');
 
-Route::post('teamRegistration/form-student', [StudentController::class, 'store'])->name('form.student');
+    Route::get('/success', [StudentController::class, 'success'])->name('team-invitation-success');
+});
 
+
+Route::get('visitor/{uuid}', [InvitationController::class, 'show'])->name('visitor-invitation-show');
 
 
 //TODO 2 or 1 routes for displaying info
