@@ -107,7 +107,7 @@
                             <input type="text" id="university_specialization" name="university_specialization"
                                    value="{{ old('university_specialization') }}" class="form-control"
                                    placeholder="التخصص الجامعي">
-                            <label for="university_specialization">اسم الفسم/الكلية/البرنامج <span
+                            <label for="university_specialization">اسم القسم/الكلية/البرنامج <span
                                     class="mandatory">*</span></label>
                         </div>
                     </div>

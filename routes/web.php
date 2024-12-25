@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::prefix('attend')->group(function () {
+Route::prefix('visitor')->group(function () {
     Route::get('/', [InvitationController::class, 'index'])->name('visitor-invitation-form');
 
     Route::post('/', [InvitationController::class, 'store'])->name('visitor-invitation-submit');
@@ -43,7 +43,7 @@ Route::prefix('register')->group(function () {
 });
 
 
-Route::get('visitor/{uuid}', [InvitationController::class, 'show'])->name('visitor-invitation-show');
+Route::get('visitor-info/{uuid}', [InvitationController::class, 'show'])->name('visitor-invitation-show');
 
 
 //TODO 2 or 1 routes for displaying info
