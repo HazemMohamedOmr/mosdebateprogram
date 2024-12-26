@@ -80,10 +80,22 @@ class InvitationService
 
     public function show($uuid)
     {
-        $url = route('visitor-invitation-show', ['uuid' => $uuid]);
-        $image = $this->generateBase64QrCode($url);
+        // Retrieve the invitation using the UUID (invitation_key)
+        $invitation = Invitations::where('invitation_key', $uuid)->with('students')->first();
 
-        return view('invitation.qrcode', compact('image'));
+        // If no record is found, return a not found
+        if (!$invitation) {
+            return view('invitation.not-found');
+        }
+
+        // Format the graduation_date to "mm-yyyy"
+        if ($invitation->graduation_date) {
+//            dd($invitation);
+            $invitation->graduation_date = Carbon::createFromFormat('Y-m-d', $invitation->graduation_date)->format('m-Y');
+        }
+
+        // Pass the invitation and related students to the view
+        return view('invitation.visitor-show', compact('invitation'));
     }
 
 }
