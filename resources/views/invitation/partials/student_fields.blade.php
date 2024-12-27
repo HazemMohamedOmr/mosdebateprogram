@@ -59,7 +59,6 @@
     <input type="file" id="personal_photo_{{ $studentIndex }}" name="students[{{ $studentIndex }}][personal_photo]" class="form-control" required>
     <small class="form-text text-muted text-right">يرجى رفع صورة بصيغة JPG أو PNG.</small>
 </div>
-<!-- TODO Picture html  -->
 
 <!-- Age Range -->
 <div class="form-group mb-3">

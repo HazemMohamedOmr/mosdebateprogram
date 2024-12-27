@@ -1,8 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminTeamController;
+use App\Http\Controllers\Admin\AdminVisitorController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\StudentController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -45,5 +49,16 @@ Route::prefix('register')->group(function () {
 
 Route::get('visitor-info/{uuid}', [InvitationController::class, 'show'])->name('visitor-invitation-show');
 
+Route::prefix('admin')->group(function () {
+    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-//TODO 2 or 1 routes for displaying info
+    Route::post('/toggle-form/{formType}', [AdminController::class, 'toggleForm'])->name('admin.toggleForm');
+
+    Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
+
+    Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
+
+    Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.login');
+
+});
+

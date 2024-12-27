@@ -4,6 +4,7 @@ namespace App\Http\Service;
 
 use App\Mail\InvitationEmail;
 use App\Models\Invitations;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -13,11 +14,22 @@ class InvitationService
 {
     public function index()
     {
-        return view('invitation.visitor-registration');
+        // Check if the form is open
+        if (!Setting::isFormOpen('invitation_form')) {
+            return view('invitation.visitor-registration', ['formClosed' => true]);
+        }
+
+        // Show the form
+        return view('invitation.visitor-registration', ['formClosed' => false]);
     }
 
     public function store($request)
     {
+        // Check if the form is open
+        if (!Setting::isFormOpen('invitation_form')) {
+            return view('invitation.visitor-registration', ['formClosed' => true]);
+        }
+
         $validatedData = $request->all();
 
         // Add type and default null values
@@ -80,10 +92,22 @@ class InvitationService
 
     public function show($uuid)
     {
-        $url = route('visitor-invitation-show', ['uuid' => $uuid]);
-        $image = $this->generateBase64QrCode($url);
+        // Retrieve the invitation using the UUID (invitation_key)
+        $invitation = Invitations::where('invitation_key', $uuid)->with('students')->first();
 
-        return view('invitation.qrcode', compact('image'));
+        // If no record is found, return a not found
+        if (!$invitation) {
+            return view('invitation.not-found');
+        }
+
+        // Format the graduation_date to "mm-yyyy"
+        if ($invitation->graduation_date) {
+//            dd($invitation);
+            $invitation->graduation_date = Carbon::createFromFormat('Y-m-d', $invitation->graduation_date)->format('m-Y');
+        }
+
+        // Pass the invitation and related students to the view
+        return view('invitation.visitor-show', compact('invitation'));
     }
 
 }

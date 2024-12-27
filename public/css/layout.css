@@ -178,3 +178,34 @@ h1, h2, h3, h4, h5, h6, span, p, label {
     margin: 20px;
 }
 
+.image-smaller{
+    width: 80% !important;
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.img-thumbnail {
+    border-radius: 50%;
+    border: 2px solid #ddd;
+}
+
+.card h5 {
+    font-size: 1.25rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.student-photo {
+    width: 200px !important;
+    height: 200px !important;
+    border-radius: 50% !important;
+    border: 2px solid #ddd !important;
+    object-fit: cover;
+}
