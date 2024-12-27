@@ -4,6 +4,7 @@ namespace App\Http\Service;
 
 use App\Mail\InvitationEmail;
 use App\Models\Invitations;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
@@ -13,11 +14,21 @@ class StudentService
 {
     public function index()
     {
-        return view('invitation.team-registration');
+        // Check if the form is open
+        if (!Setting::isFormOpen('students_form')) {
+            return view('invitation.team-registration', ['formClosed' => true]);
+        }
+
+        // Show the form
+        return view('invitation.team-registration', ['formClosed' => false]);
     }
 
-    public function store($request): RedirectResponse
+    public function store($request)
     {
+        if (!Setting::isFormOpen('students_form')) {
+            return view('invitation.team-registration', ['formClosed' => true]);
+        }
+
         // Validate main invitation data
         $validatedInvitation = $request->all();
 

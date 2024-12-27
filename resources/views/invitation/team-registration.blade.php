@@ -2,17 +2,18 @@
 
 @section('content')
 
-    <div class="container pb-5">
+    @if (!$formClosed)
+        <div class="container pb-5">
         <div class="form-container mx-auto" style="max-width: 700px;">
             <div class="my-5 separator">
                 <div class="row">
                     <div
-                        class="col-md-4 d-flex justify-content-center align-items-center order-2 order-md-1 mb-4 mb-md-0">
+                        class="col-md-5 d-flex justify-content-center align-items-center order-2 order-md-1 mb-4 mb-md-0">
                         <h1 style="font-weight: bold;">
                             نموذج تسجيل الفرق الجامعية
                         </h1>
                     </div>
-                    <div class="col-md-8 order-1 order-md-2">
+                    <div class="col-md-7 order-1 order-md-2">
                         <img src="{{ asset('images/public.png') }}" class="img-fluid zoom-image">
                     </div>
                 </div>
@@ -214,5 +215,31 @@
             </form>
         </div>
     </div>
+    @endif
 
+    @if ($formClosed)
+        <div class="d-flex justify-content-center align-items-center vh-100">
+            <img src="{{ asset('images/public.png') }}" alt="Logo">
+        </div>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                @if ($formClosed)
+                Swal.fire({
+                    imageUrl: "{{ asset('images/public.png') }}",
+                    imageWidth: 200,
+                    title: 'النموذج مغلق',
+                    text: 'عذراً، نموذج تسجيل الفرق الجامعية مغلق حالياًً.',
+                    confirmButtonText: 'حسنًا',
+                    didOpen: () => {
+                        // Add transform scale effect using CSS
+                        const image = document.querySelector('.swal2-image');
+                        if (image) {
+                            image.style.transform = 'scale(1.7)';
+                        }
+                    }
+                });
+                @endif
+            });
+        </script>
+    @endif
 @endsection

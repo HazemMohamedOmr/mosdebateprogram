@@ -4,6 +4,7 @@ namespace App\Http\Service;
 
 use App\Mail\InvitationEmail;
 use App\Models\Invitations;
+use App\Models\Setting;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
@@ -13,11 +14,22 @@ class InvitationService
 {
     public function index()
     {
-        return view('invitation.visitor-registration');
+        // Check if the form is open
+        if (!Setting::isFormOpen('invitation_form')) {
+            return view('invitation.visitor-registration', ['formClosed' => true]);
+        }
+
+        // Show the form
+        return view('invitation.visitor-registration', ['formClosed' => false]);
     }
 
     public function store($request)
     {
+        // Check if the form is open
+        if (!Setting::isFormOpen('invitation_form')) {
+            return view('invitation.visitor-registration', ['formClosed' => true]);
+        }
+
         $validatedData = $request->all();
 
         // Add type and default null values
