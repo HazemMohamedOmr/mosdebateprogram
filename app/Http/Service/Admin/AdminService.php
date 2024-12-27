@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Service\Admin;
 
 use App\Models\Invitations;
 use App\Models\Setting;
-use Illuminate\Http\Request;
+use Illuminate\Http\JsonResponse;
 
-class AdminController extends Controller
+class AdminService
 {
-    public function toggleForm(Request $request, $formType)
+    public function toggleForm($request, $formType): JsonResponse
     {
         // Map form types to descriptive keys
         $formKeys = [
@@ -48,5 +48,4 @@ class AdminController extends Controller
 
         return view('admin.dashboard', compact('visitors', 'groups', 'invitationFormStatus', 'studentsFormStatus'));
     }
-
 }

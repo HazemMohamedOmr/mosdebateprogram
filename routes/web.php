@@ -1,9 +1,12 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\AdminLoginController;
+use App\Http\Controllers\Admin\AdminTeamController;
+use App\Http\Controllers\Admin\AdminVisitorController;
 use App\Http\Controllers\InvitationController;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\AdminController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -51,17 +54,11 @@ Route::prefix('admin')->group(function () {
 
     Route::post('/toggle-form/{formType}', [AdminController::class, 'toggleForm'])->name('admin.toggleForm');
 
-    Route::get('visitors', function () { // TODO refactoring
-        return view('admin.visitors');
-    })->name('admin-visitors-show');
+    Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
 
-    Route::get('register', function () { // TODO refactoring
-        return view('admin.register');
-    })->name('admin-register-show');
+    Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
 
-    Route::get('login', function () { // TODO refactoring
-        return view('admin.login');
-    })->name('login');
+    Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.login');
 
 });
 

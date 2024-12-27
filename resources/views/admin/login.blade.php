@@ -18,7 +18,7 @@
                                 </div>
                             </div>
                             <div class="card-body">
-                                <form role="form" method="POST" action="{{ route('login') }}" class="text-start">
+                                <form role="form" method="POST" action="{{ route('admin.login') }}" class="text-start">
                                     @csrf
                                     @if (Session::has('status'))
                                         <div class="alert alert-success alert-dismissible text-white" role="alert">
