@@ -44,10 +44,13 @@ Route::prefix('register')->group(function () {
     Route::post('/', [StudentController::class, 'store'])->name('team-invitation-submit');
 
     Route::get('/success', [StudentController::class, 'success'])->name('team-invitation-success');
+
+    Route::get('/qrcode/{uuid}', [StudentController::class, 'qrcode'])->name('team-invitation-qrcode');
 });
 
 
 Route::get('visitor-info/{uuid}', [InvitationController::class, 'show'])->name('visitor-invitation-show');
+Route::get('student-info/{uuid}', [StudentController::class, 'show'])->name('student-invitation-show');
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
@@ -55,8 +58,13 @@ Route::prefix('admin')->group(function () {
     Route::post('/toggle-form/{formType}', [AdminController::class, 'toggleForm'])->name('admin.toggleForm');
 
     Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
+    Route::get('/visitors/{id}', [AdminVisitorController::class, 'show'])->name('admin.visitors.show');
 
     Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
+    Route::get('/register/{id}', [AdminTeamController::class, 'show'])->name('admin.register.show');
+    Route::post('/invitation', [AdminTeamController::class, 'invitation'])->name('admin.send.invitation');
+
+
 
     Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.login');
 

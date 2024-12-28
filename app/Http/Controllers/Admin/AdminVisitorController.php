@@ -22,4 +22,9 @@ class AdminVisitorController extends Controller
         return $this->adminService->index();
     }
 
+    public function show($id)
+    {
+        return $this->adminService->show($id);
+    }
+
 }

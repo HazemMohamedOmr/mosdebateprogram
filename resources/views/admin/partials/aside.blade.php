@@ -23,7 +23,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'admin-visitors-show' ? 'active' : '' }}" href="{{ route('admin.visitors') }}">
                     <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons-round opacity-10">table_view</i>
+                        <i class="material-icons-round opacity-10">person</i>
                     </div>
                     <span class="nav-link-text me-1">الدعوات</span>
                 </a>
@@ -31,7 +31,7 @@
             <li class="nav-item">
                 <a class="nav-link {{ Route::currentRouteName() == 'admin-register-show' ? 'active' : '' }}" href="{{ route('admin.register') }}">
                     <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
-                        <i class="material-icons-round opacity-10">table_view</i>
+                        <i class="material-icons-round opacity-10">groups</i>
                     </div>
                     <span class="nav-link-text me-1">المجموعات</span>
                 </a>

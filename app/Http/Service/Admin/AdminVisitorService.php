@@ -2,10 +2,23 @@
 
 namespace App\Http\Service\Admin;
 
+use App\Models\Invitations;
+
 class AdminVisitorService
 {
     public function index()
     {
-        return view('admin.visitors');
+        $invitations = Invitations::where('type', 0)->paginate(10);
+
+        return view('admin.visitors', compact('invitations'));
     }
+
+
+    public function show($id)
+    {
+        $invitation = Invitations::find($id);
+
+        return view('admin.visitors-show', compact('invitation'));
+    }
+
 }

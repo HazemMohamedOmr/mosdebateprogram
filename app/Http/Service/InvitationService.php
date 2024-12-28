@@ -61,6 +61,7 @@ class InvitationService
         try {
             Mail::to($invitation->email)->send(new InvitationEmail($invitation, 1));
             $invitation->is_email_send = 1;
+            $invitation->is_invited = 1;
         } catch (\Exception $e) {
             Log::error($e);
             $invitation->is_email_send = 0;
