@@ -8,6 +8,7 @@ use App\Models\Setting;
 use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -107,6 +108,10 @@ class StudentService
 
     public function show($uuid)
     {
+        if (!Auth::check()) {
+            return view('invitation.cannot-view-data');
+        }
+
         // Retrieve the invitation using the UUID (invitation_key)
         $student = Student::where('invitation_key', $uuid)->first();
 

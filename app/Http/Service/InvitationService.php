@@ -6,6 +6,7 @@ use App\Mail\InvitationEmail;
 use App\Models\Invitations;
 use App\Models\Setting;
 use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
@@ -74,7 +75,7 @@ class InvitationService
     {
         $invitation = Invitations::where('invitation_key', $uuid)->first();
 
-        if (isset($invitation)){
+        if (isset($invitation)) {
             $url = route('visitor-invitation-show', ['uuid' => $uuid]);
             $image = $this->generateBase64QrCode($url);
 
@@ -93,6 +94,9 @@ class InvitationService
 
     public function show($uuid)
     {
+        if (!Auth::check()) {
+            return view('invitation.cannot-view-data');
+        }
         // Retrieve the invitation using the UUID (invitation_key)
         $invitation = Invitations::where('invitation_key', $uuid)->with('students')->first();
 
