@@ -120,6 +120,9 @@ class StudentService
             return view('invitation.not-found');
         }
 
+        $student->attend = 1;
+        $student->save();
+
         // Pass the invitation and related students to the view
         return view('invitation.student-show', compact('student'));
     }
