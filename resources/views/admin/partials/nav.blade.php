@@ -12,6 +12,9 @@
                         <i class="material-icons-round opacity-10">login</i>
                         <span class="d-sm-inline d-none pe-2"
                               onclick="event.preventDefault();document.getElementById('logout-form').submit();">تسجيل خروج</span>
+                        <form id="logout-form" method="POST" action="{{ route('admin.logout') }}" style="display: none;">
+                            @csrf
+                        </form>
                     </a>
                 </li>
                 <li class="nav-item d-xl-none pe-3 d-flex align-items-center">
