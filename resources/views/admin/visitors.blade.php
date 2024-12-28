@@ -70,7 +70,7 @@
                                         <td class="align-middle">
 
                                             <div class="d-flex justify-content-center">
-                                                <a class="" href="{{ route('admin.register.show', ['id' => $invitation->id]) }}">
+                                                <a class="" href="{{ route('admin.visitors.show', ['id' => $invitation->id]) }}">
                                                     <i class="material-icons opacity-10">visibility</i>
                                                 </a>
                                             </div>
