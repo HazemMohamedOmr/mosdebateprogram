@@ -44,6 +44,8 @@ Route::prefix('register')->group(function () {
     Route::post('/', [StudentController::class, 'store'])->name('team-invitation-submit');
 
     Route::get('/success', [StudentController::class, 'success'])->name('team-invitation-success');
+
+    Route::get('/qrcode/{uuid}', [StudentController::class, 'qrcode'])->name('team-invitation-qrcode');
 });
 
 

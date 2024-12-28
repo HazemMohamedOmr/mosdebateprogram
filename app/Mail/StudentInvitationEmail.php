@@ -27,7 +27,7 @@ class StudentInvitationEmail extends Mailable
     public function build()
     {
         $view = 'emails.invitation_email';
-        $link = route('visitor-invitation-qrcode', ['uuid' => $this->invitation->invitation_key]);
+        $link = route('register-invitation-qrcode', ['uuid' => $this->invitation->invitation_key]);
         return $this->subject('دعوة دوري المناظرات')
             ->view($view)
             ->with('invitation', $this->invitation)

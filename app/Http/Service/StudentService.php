@@ -5,10 +5,12 @@ namespace App\Http\Service;
 use App\Mail\InvitationEmail;
 use App\Models\Invitations;
 use App\Models\Setting;
+use App\Models\Student;
 use Carbon\Carbon;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class StudentService
 {
@@ -80,6 +82,27 @@ class StudentService
         }
 
         $invitation->save();
+    }
+
+    public function qrcode($uuid)
+    {
+        $invitation = Student::where('invitation_key', $uuid)->first();
+
+        if (isset($invitation)){
+            $url = route('visitor-invitation-show', ['uuid' => $uuid]);
+            $image = $this->generateBase64QrCode($url);
+
+            return view('invitation.qrcode', compact('image'));
+        }
+
+        return view('invitation.not-found');
+    }
+
+    public function generateBase64QrCode($text, $size = 200)
+    {
+        return QrCode::size($size)
+            ->format('svg')
+            ->generate($text);
     }
 
 }
