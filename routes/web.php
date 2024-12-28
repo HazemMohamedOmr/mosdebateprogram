@@ -55,8 +55,10 @@ Route::prefix('admin')->group(function () {
     Route::post('/toggle-form/{formType}', [AdminController::class, 'toggleForm'])->name('admin.toggleForm');
 
     Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
+    Route::get('/visitors/{id}', [AdminVisitorController::class, 'index'])->name('admin.visitors.show');
 
     Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
+    Route::get('/register/{id}', [AdminTeamController::class, 'index'])->name('admin.register.show');
 
     Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.login');
 
