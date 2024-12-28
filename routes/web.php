@@ -50,6 +50,7 @@ Route::prefix('register')->group(function () {
 
 
 Route::get('visitor-info/{uuid}', [InvitationController::class, 'show'])->name('visitor-invitation-show');
+Route::get('student-info/{uuid}', [StudentController::class, 'show'])->name('student-invitation-show');
 
 Route::prefix('admin')->group(function () {
     Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');

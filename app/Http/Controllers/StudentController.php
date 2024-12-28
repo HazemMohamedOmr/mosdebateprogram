@@ -31,4 +31,14 @@ class StudentController extends Controller
         return $this->studentService->success();
     }
 
+    public function qrcode(Request $request, $uuid)
+    {
+        return $this->studentService->qrcode($uuid);
+    }
+
+    public function show(Request $request, $uuid)
+    {
+        return $this->studentService->show($uuid);
+    }
+
 }

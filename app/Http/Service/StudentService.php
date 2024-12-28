@@ -89,7 +89,7 @@ class StudentService
         $invitation = Student::where('invitation_key', $uuid)->first();
 
         if (isset($invitation)){
-            $url = route('visitor-invitation-show', ['uuid' => $uuid]);
+            $url = route('student-invitation-show', ['uuid' => $uuid]);
             $image = $this->generateBase64QrCode($url);
 
             return view('invitation.qrcode', compact('image'));
@@ -103,6 +103,20 @@ class StudentService
         return QrCode::size($size)
             ->format('svg')
             ->generate($text);
+    }
+
+    public function show($uuid)
+    {
+        // Retrieve the invitation using the UUID (invitation_key)
+        $student = Student::where('invitation_key', $uuid)->first();
+
+        // If no record is found, return a not found
+        if (!$student) {
+            return view('invitation.not-found');
+        }
+
+        // Pass the invitation and related students to the view
+        return view('invitation.student-show', compact('student'));
     }
 
 }
