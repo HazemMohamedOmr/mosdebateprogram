@@ -59,6 +59,9 @@ Route::prefix('admin')->group(function () {
 
     Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
     Route::get('/register/{id}', [AdminTeamController::class, 'show'])->name('admin.register.show');
+    Route::post('/invitation', [AdminTeamController::class, 'invitation'])->name('admin.send.invitation');
+
+
 
     Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.login');
 

@@ -28,4 +28,9 @@ class AdminTeamController extends Controller
         return $this->adminService->show($id);
     }
 
+    public function invitation(Request $request): JsonResponse
+    {
+        return $this->adminService->invitation($request);
+    }
+
 }

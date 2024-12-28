@@ -62,22 +62,28 @@
                                             <span class="text-xs font-weight-bold">  {{ $invitation->email }} </span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold">  {{ $invitation->university_name . ' - ' . $invitation->university_specialization }} </span>
+                                            <span
+                                                class="text-xs font-weight-bold">  {{ $invitation->university_name . ' - ' . $invitation->university_specialization }} </span>
                                         </td>
                                         <td class="align-middle text-center text-sm">
-                                            <span class="text-xs font-weight-bold">  {{ $invitation->phone_number }} </span>
+                                            <span
+                                                class="text-xs font-weight-bold">  {{ $invitation->phone_number }} </span>
                                         </td>
                                         <td class="align-middle">
 
                                             <div class="d-flex justify-content-center">
-                                                <a class="" href="{{ route('admin.register.show', ['id' => $invitation->id]) }}">
+                                                <a class=""
+                                                   href="{{ route('admin.register.show', ['id' => $invitation->id]) }}">
                                                     <i class="material-icons opacity-10">visibility</i>
                                                 </a>
 
-                                                <a class="mx-2" href="#">
+                                                <a class="mx-2" href="#" data-bs-toggle="modal"
+                                                   data-bs-target="#exampleModal-{{$invitation->id}}">
                                                     <i class="material-icons opacity-10">mail</i>
                                                 </a>
                                             </div>
+
+                                            @include('admin.register-invite-modal')
 
                                         </td>
                                     </tr>
