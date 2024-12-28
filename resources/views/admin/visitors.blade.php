@@ -79,13 +79,15 @@
                                     </tr>
                                 @endforeach
 
-                                @if(!count($invitations))
-                                    لا يوجد بيانات
-                                @endif
-
                                 </tbody>
                             </table>
                         </div>
+
+                        @if(!count($invitations))
+                           <div class="d-flex justify-content-center">
+                               لا يوجد بيانات
+                           </div>
+                        @endif
 
                         {{ $invitations->links() }}
 

@@ -48,4 +48,33 @@ class StudentInvitationRequest extends FormRequest
             'students.*.experience' => 'nullable|string',
         ];
     }
+
+
+    public function attributes(): array
+    {
+        return [
+            'university_name' => 'اسم الجامعة',
+            'first_name' => 'الاسم الاول',
+            'second_name' => 'الاسم الثاني',
+            'email' => 'البريد الالكتروني',
+            'phone_number' => 'رقم الهاتف',
+            'university_specialization' => 'اسم القسم/الكلية/البرنامج',
+            'heard_about' => 'سمعت عنا',
+            'reason_participation' => 'رغبة الحضور',
+            'team_leader' => 'اسم قائد الفريق',
+
+
+            'students.*.first_name' => 'الاسم الاول',
+            'students.*.second_name' => 'الاسم الثاني',
+            'students.*.sur_name' => 'اسم العائلة',
+            'students.*.age_range' => 'الفئة العمرية',
+            'students.*.national_id' => 'رقم الهوية الوطنية',
+            'students.*.email' => 'البريد الالكتروني',
+            'students.*.phone_number' => 'رقم الهاتف',
+            'students.*.study_year_program' => 'سنة الدراسة/البرنامج',
+            'students.*.experience' => 'الخبرات',
+            'students.*.personal_photo' => 'الصورة الشخصية',
+            'students.*.gender' => 'الجنس',
+        ];
+    }
 }

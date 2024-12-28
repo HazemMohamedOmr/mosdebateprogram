@@ -33,9 +33,28 @@ class VisitorInvitationRequest extends FormRequest
             'phone_number' => 'required|string|max:15',
             'university_name' => 'nullable|string|max:255',
             'university_specialization' => 'nullable|string|max:255',
-            'graduation_date' => 'nullable|date_format:Y-m',
+            'graduation_date' => 'required|date_format:Y-m',
             'heard_about' => 'nullable|array',
             'reason_participation' => 'nullable|array',
         ];
     }
+
+    public function attributes(): array
+    {
+        return [
+            'first_name' => 'الاسم الاول',
+            'second_name' => 'الاسم الثاني',
+            'sur_name' => 'اسم العائلة',
+            'age_range' => 'الفئة العمرية',
+            'national_id' => 'رقم الهوية الوطنية',
+            'email' => 'البريد الالكتروني',
+            'phone_number' => 'رقم الهاتف',
+            'university_name' => 'اسم الجامعة',
+            'university_specialization' => 'التخصص الجامعي',
+            'graduation_date' => 'سنة الدراسة',
+            'heard_about' => 'سمعت عنا',
+            'reason_participation' => 'رغبة الحضور',
+        ];
+    }
+
 }

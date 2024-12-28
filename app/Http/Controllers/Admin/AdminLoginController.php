@@ -8,6 +8,7 @@ use App\Http\Service\Admin\AdminService;
 use App\Http\Service\Admin\AdminTeamService;
 use App\Http\Service\Admin\AdminVisitorService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AdminLoginController extends Controller
@@ -19,9 +20,19 @@ class AdminLoginController extends Controller
         $this->adminService = $adminService;
     }
 
-    public function index()
+    public function showLoginForm()
     {
-        return $this->adminService->index();
+        return $this->adminService->showLoginForm();
+    }
+
+    public function login(Request $request): RedirectResponse
+    {
+        return $this->adminService->login($request);
+    }
+
+    public function logout(): RedirectResponse
+    {
+        return $this->adminService->logout();
     }
 
 }

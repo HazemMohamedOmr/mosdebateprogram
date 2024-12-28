@@ -53,20 +53,25 @@ Route::get('visitor-info/{uuid}', [InvitationController::class, 'show'])->name('
 Route::get('student-info/{uuid}', [StudentController::class, 'show'])->name('student-invitation-show');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard');
 
-    Route::post('/toggle-form/{formType}', [AdminController::class, 'toggleForm'])->name('admin.toggleForm');
+    Route::get('/login', [AdminLoginController::class, 'showLoginForm'])->name('login');
+    Route::post('/login', [AdminLoginController::class, 'login'])->name('admin.login');
 
-    Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
-    Route::get('/visitors/{id}', [AdminVisitorController::class, 'show'])->name('admin.visitors.show');
+    Route::middleware('auth')->group(function () {
 
-    Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
-    Route::get('/register/{id}', [AdminTeamController::class, 'show'])->name('admin.register.show');
-    Route::post('/invitation', [AdminTeamController::class, 'invitation'])->name('admin.send.invitation');
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
 
+        Route::post('/toggle-form/{formType}', [AdminController::class, 'toggleForm'])->name('admin.toggleForm');
 
+        Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
+        Route::get('/visitors/{id}', [AdminVisitorController::class, 'show'])->name('admin.visitors.show');
 
-    Route::get('/login', [AdminLoginController::class, 'index'])->name('admin.login');
+        Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
+        Route::get('/register/{id}', [AdminTeamController::class, 'show'])->name('admin.register.show');
+        Route::post('/invitation', [AdminTeamController::class, 'invitation'])->name('admin.send.invitation');
+
+        Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
+    });
 
 });
 

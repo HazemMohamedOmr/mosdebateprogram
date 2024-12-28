@@ -3,7 +3,7 @@
      navbar-scroll="true">
     <div class="container-fluid py-1 px-3">
         <div class="collapse navbar-collapse mt-sm-0 mt-2 px-0" id="navbar">
-            <form method="POST" action="" class="d-none" id="logout-form">
+            <form id="logout-form" method="POST" action="{{ route('admin.logout') }}" style="display: none;">
                 @csrf
             </form>
             <ul class="navbar-nav me-auto ms-0 justify-content-end">

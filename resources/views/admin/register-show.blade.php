@@ -35,6 +35,7 @@
                             <p><strong>التخصص الجامعي:</strong> {{ $invitation->university_specialization }}</p>
                             <p><strong>قائد الفريق:</strong> {{ $invitation->team_leader ?? 'غير محدد' }}</p>
                             <p><strong>حالة الدعوة</strong> {{ $invitation->is_invited ? 'تم الدعوة' : 'لم يتم الدعوة' }}</p>
+                            <p><strong>حضور:</strong> {{ $invitation->attend ? 'نعم' : 'لا' }}</p>
 
 
                             <div class="row">
@@ -62,6 +63,7 @@
                                                     <p><strong>سنة الدراسة:</strong> {{ $student->study_year_program }}</p>
                                                     <p><strong>الخبرة:</strong> {{ $student->experience ?? 'لا يوجد' }}</p>
                                                     <p><strong>حالة الدعوة</strong> {{ $student->is_invited ? 'تم الدعوة' : 'لم يتم الدعوة' }}</p>
+                                                    <p><strong>حضور:</strong> {{ $student->attend ? 'نعم' : 'لا' }}</p>
                                                 </div>
                                             </div>
                                         </div>
