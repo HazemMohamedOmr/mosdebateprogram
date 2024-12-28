@@ -88,6 +88,10 @@
                                         </td>
                                     </tr>
                                 @endforeach
+
+                                @if(!count($invitations))
+                                    لا يوجد بيانات
+                                @endif
                                 </tbody>
                             </table>
                         </div>
