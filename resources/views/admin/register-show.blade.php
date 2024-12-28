@@ -34,6 +34,7 @@
                             <p><strong>رقم الهاتف:</strong> {{ $invitation->phone_number }}</p>
                             <p><strong>التخصص الجامعي:</strong> {{ $invitation->university_specialization }}</p>
                             <p><strong>قائد الفريق:</strong> {{ $invitation->team_leader ?? 'غير محدد' }}</p>
+                            <p><strong>حالة الدعوة</strong> {{ $invitation->is_invited ? 'تم الدعوة' : 'لم يتم الدعوة' }}</p>
 
 
                             <div class="row">
@@ -60,6 +61,7 @@
                                                     <p><strong>الفئة العمرية:</strong> {{ $student->age_range }}</p>
                                                     <p><strong>سنة الدراسة:</strong> {{ $student->study_year_program }}</p>
                                                     <p><strong>الخبرة:</strong> {{ $student->experience ?? 'لا يوجد' }}</p>
+                                                    <p><strong>حالة الدعوة</strong> {{ $student->is_invited ? 'تم الدعوة' : 'لم يتم الدعوة' }}</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -68,7 +70,7 @@
                                     <p class="text-center">لا توجد تفاصيل للطلاب.</p>
                                 @endif
                             </div>
-                            
+
                         </div>
 
                     </div>
