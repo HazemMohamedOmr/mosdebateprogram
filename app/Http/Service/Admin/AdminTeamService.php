@@ -12,4 +12,11 @@ class AdminTeamService
 
         return view('admin.register', compact('invitations'));
     }
+
+    public function show($id)
+    {
+        $invitation = Invitations::find($id);
+
+        return view('admin.register-show', compact('invitation'));
+    }
 }

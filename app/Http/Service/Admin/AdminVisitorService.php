@@ -12,4 +12,13 @@ class AdminVisitorService
 
         return view('admin.visitors', compact('invitations'));
     }
+
+
+    public function show($id)
+    {
+        $invitation = Invitations::find($id);
+
+        return view('admin.visitors-show', compact('invitation'));
+    }
+
 }
