@@ -9,7 +9,7 @@
                     <div
                         class="col-md-4 d-flex justify-content-center align-items-center order-2 order-md-1 mb-4 mb-md-0">
                         <h1 style="font-weight: bold;">
-                            بيانات دعوة
+                            بيانات دعوة المشارك
                         </h1>
                     </div>
                     <div class="col-md-8 order-1 order-md-2 d-flex justify-content-center">

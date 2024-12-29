@@ -9,7 +9,11 @@
                     <div
                         class="col-md-4 d-flex justify-content-center align-items-center order-2 order-md-1 mb-4 mb-md-0">
                         <h1 style="font-weight: bold;">
-                            بيانات دعوة
+                            @if ($invitation->type === 0)
+                                بيانات دعوة الزائر
+                            @else
+                                بيانات دعوة المشارك
+                            @endif
                         </h1>
                     </div>
                     <div class="col-md-8 order-1 order-md-2 d-flex justify-content-center">
@@ -19,14 +23,13 @@
             </div>
 
 
-
             <!-- Display General Information -->
             <div class="card mb-4">
                 <div class="card-header text-center">
                     @if ($invitation->type === 0)
-                        <h3>تفاصيل الدعوة</h3>
+                        <h3>بيانات الدعوة</h3>
                     @else
-                        <h3>بيانات المسؤول</h3>
+                        <h3> بيانات المسؤول</h3>
                     @endif
 
                 </div>
@@ -35,7 +38,9 @@
                         <!-- Type 0: Display Specific Attributes -->
                         <div class="row">
                             <div class="col-md-4">
-                                <p><strong>الاسم:</strong> {{ $invitation->first_name }} {{ $invitation->second_name }} {{ $invitation->sur_name }}</p>
+                                <p>
+                                    <strong>الاسم:</strong> {{ $invitation->first_name }} {{ $invitation->second_name }} {{ $invitation->sur_name }}
+                                </p>
                             </div>
                             <div class="col-md-4">
                                 <p><strong>الفئة العمرية:</strong> {{ $invitation->age_range }}</p>
@@ -49,14 +54,20 @@
                         <p><strong>اسم الجامعة:</strong> {{ $invitation->university_name }}</p>
                         <p><strong>التخصص الجامعي:</strong> {{ $invitation->university_specialization }}</p>
                         <p><strong>تاريخ التخرج:</strong> {{ $invitation->graduation_date }}</p>
-                        <p><strong>كيف سمعت عن البرنامج:</strong> {{ implode(', ', json_decode($invitation->heard_about, true) ?? []) }}</p>
-                        <p><strong>سبب الحضور:</strong> {{ implode(', ', json_decode($invitation->reason_participation, true) ?? []) }}</p>
+                        <p><strong>كيف سمعت عن
+                                البرنامج:</strong> {{ implode(', ', json_decode($invitation->heard_about, true) ?? []) }}
+                        </p>
+                        <p><strong>سبب
+                                الحضور:</strong> {{ implode(', ', json_decode($invitation->reason_participation, true) ?? []) }}
+                        </p>
                     @elseif ($invitation->type === 1)
                         <!-- Type 1: Display Attributes and Students -->
                         <p><strong>اسم الجامعة:</strong> {{ $invitation->university_name }}</p>
                         <div class="row">
                             <div class="col-md-6">
-                                <p><strong>اسم المسؤول:</strong> {{ $invitation->first_name }} {{ $invitation->second_name }}</p>
+                                <p><strong>اسم
+                                        المسؤول:</strong> {{ $invitation->first_name }} {{ $invitation->second_name }}
+                                </p>
                             </div>
                             <div class="col-md-6">
                                 <p><strong>البريد الإلكتروني:</strong> {{ $invitation->email }}</p>
@@ -69,47 +80,55 @@
                 </div>
             </div>
             @if ($invitation->type === 1)
-            <div class="card mb-4">
-                <div class="card-header text-center">
-                    <h3>بيانات الأعضاء</h3>
-                </div>
-                <div class="card-body">
-                    <!-- Display Students -->
-                    <div class="row">
-                        @if ($invitation->students->isNotEmpty())
-                            @foreach ($invitation->students as $index => $student)
-                                <div class="col-md-6 mb-4">
-                                    <div class="card">
-                                        <div class="card-body text-center">
-                                            <!-- Personal Photo -->
-                                            @if ($student->personal_photo)
-                                                <img src="{{ asset('storage/' . $student->personal_photo) }}" alt="صورة العضو"
-                                                     class="img-thumbnail student-photo mb-3" style="width: 120px; height: 120px;">
-                                            @else
-                                                <img src="{{ asset('images/default-profile.png') }}" alt="صورة افتراضية"
-                                                     class="img-thumbnail student-photo mb-3" style="width: 120px; height: 120px;">
-                                            @endif
+                <div class="card mb-4">
+                    <div class="card-header text-center">
+                        <h3>بيانات الأعضاء</h3>
+                    </div>
+                    <div class="card-body">
+                        <!-- Display Students -->
+                        <div class="row">
+                            @if ($invitation->students->isNotEmpty())
+                                @foreach ($invitation->students as $index => $student)
+                                    <div class="col-md-6 mb-4">
+                                        <div class="card">
+                                            <div class="card-body text-center">
+                                                <!-- Personal Photo -->
+                                                @if ($student->personal_photo)
+                                                    <img src="{{ asset('storage/' . $student->personal_photo) }}"
+                                                         alt="صورة العضو"
+                                                         class="img-thumbnail student-photo mb-3"
+                                                         style="width: 120px; height: 120px;">
+                                                @else
+                                                    <img src="{{ asset('images/default-profile.png') }}"
+                                                         alt="صورة افتراضية"
+                                                         class="img-thumbnail student-photo mb-3"
+                                                         style="width: 120px; height: 120px;">
+                                                @endif
 
-                                            <!-- Student Information -->
-                                            <p><strong>الاسم:</strong> {{ $student->first_name }} {{ $student->second_name }} {{ $student->sur_name }}</p>
-                                            <p><strong>الجنس:</strong> {{ $student->gender === null ? '' : ($student->gender ? 'أنثى' : 'ذكر') }}</p>
-                                            <p><strong>رقم الهوية:</strong> {{ $student->national_id }}</p>
-                                            <p><strong>البريد الإلكتروني:</strong> {{ $student->email }}</p>
-                                            <p><strong>رقم الهاتف:</strong> {{ $student->phone_number }}</p>
-                                            <p><strong>الفئة العمرية:</strong> {{ $student->age_range }}</p>
-                                            <p><strong>سنة الدراسة:</strong> {{ $student->study_year_program }}</p>
-                                            <p><strong>الخبرة:</strong> {{ $student->experience ?? 'لا يوجد' }}</p>
+                                                <!-- Student Information -->
+                                                <p>
+                                                    <strong>الاسم:</strong> {{ $student->first_name }} {{ $student->second_name }} {{ $student->sur_name }}
+                                                </p>
+                                                <p>
+                                                    <strong>الجنس:</strong> {{ $student->gender === null ? '' : ($student->gender ? 'أنثى' : 'ذكر') }}
+                                                </p>
+                                                <p><strong>رقم الهوية:</strong> {{ $student->national_id }}</p>
+                                                <p><strong>البريد الإلكتروني:</strong> {{ $student->email }}</p>
+                                                <p><strong>رقم الهاتف:</strong> {{ $student->phone_number }}</p>
+                                                <p><strong>الفئة العمرية:</strong> {{ $student->age_range }}</p>
+                                                <p><strong>سنة الدراسة:</strong> {{ $student->study_year_program }}</p>
+                                                <p><strong>الخبرة:</strong> {{ $student->experience ?? 'لا يوجد' }}</p>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                            @endforeach
-                        @else
-                            <p class="text-center">لا توجد تفاصيل للطلاب.</p>
-                        @endif
-                    </div>
+                                @endforeach
+                            @else
+                                <p class="text-center">لا توجد تفاصيل للطلاب.</p>
+                            @endif
+                        </div>
 
+                    </div>
                 </div>
-            </div>
             @endif
         </div>
     </div>

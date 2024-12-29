@@ -105,13 +105,13 @@ class InvitationService
             return view('invitation.not-found');
         }
 
+        $invitation->attended = 1;
+        $invitation->save();
+
         // Format the graduation_date to "mm-yyyy"
         if ($invitation->graduation_date) {
             $invitation->graduation_date = Carbon::createFromFormat('Y-m-d', $invitation->graduation_date)->format('m-Y');
         }
-
-        $invitation->attended = 1;
-        $invitation->save();
 
         // Pass the invitation and related students to the view
         return view('invitation.visitor-show', compact('invitation'));
