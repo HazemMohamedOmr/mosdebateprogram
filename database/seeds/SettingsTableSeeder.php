@@ -14,5 +14,7 @@ class SettingsTableSeeder extends Seeder
     {
         Setting::updateOrCreate(['key' => 'invitation_form'], ['value' => true]);
         Setting::updateOrCreate(['key' => 'students_form'], ['value' => true]);
+        Setting::updateOrCreate(['key' => 'start_range']);
+        Setting::updateOrCreate(['key' => 'end_range']);
     }
 }
