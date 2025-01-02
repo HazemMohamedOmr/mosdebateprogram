@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddDateValueToSettingsTable extends Migration
+class ChangeValueTypeSettingsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,7 +14,7 @@ class AddDateValueToSettingsTable extends Migration
     public function up()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->date('date_value')->nullable();
+            $table->string('value')->change();
         });
     }
 
@@ -26,7 +26,7 @@ class AddDateValueToSettingsTable extends Migration
     public function down()
     {
         Schema::table('settings', function (Blueprint $table) {
-            $table->dropColumn('date_value');
+            $table->boolean('value')->change();
         });
     }
 }
