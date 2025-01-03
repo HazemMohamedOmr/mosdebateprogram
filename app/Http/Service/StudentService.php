@@ -128,7 +128,7 @@ class StudentService
         if ($today->between($startDate, $endDate)) {
 
             // Decode the attendance_date JSON to an array
-            $attendanceDates = $student->attendance_dates ? json_decode($student->attendance_dates, true) : [];
+            $attendanceDates = $student->attendance_dates ?? [];
 
             // Check if today's date is already in the array
             if (!in_array($today->format('Y-m-d'), $attendanceDates)) {
@@ -140,7 +140,7 @@ class StudentService
                 $attendanceDates[] = $today->format('Y-m-d');
 
                 // Save the updated JSON back to the database
-                $student->attendance_dates = json_encode($attendanceDates);
+                $student->attendance_dates = $attendanceDates;
                 $student->save();
             }
         }

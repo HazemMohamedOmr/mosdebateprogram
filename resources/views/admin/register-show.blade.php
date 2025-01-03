@@ -37,7 +37,7 @@
                             <p><strong>حالة الدعوة</strong> {{ $invitation->is_invited ? 'تم الدعوة' : 'لم يتم الدعوة' }}</p>
                             <p><strong>حضور:</strong> {{ $invitation->attended ? 'نعم' : 'لا' }}</p>
                             @if($invitation->attended)
-                                <p><strong>أيام الحضور:</strong> {{ implode(', ', json_decode($invitation->attendance_dates, true)) }}</p>
+                                <p><strong>أيام الحضور:</strong> {{ implode(', ', $invitation->attendance_dates ?? []) }}</p>
                             @endif
 
 
@@ -68,7 +68,7 @@
                                                     <p><strong>حالة الدعوة</strong> {{ $student->is_invited ? 'تم الدعوة' : 'لم يتم الدعوة' }}</p>
                                                     <p><strong>حضور:</strong> {{ $student->attend ? 'نعم' : 'لا' }}</p>
                                                     @if($student->attend)
-                                                        <p><strong>أيام الحضور:</strong> {{ implode(', ', json_decode($student->attendance_dates, true)) }}</p>
+                                                        <p><strong>أيام الحضور:</strong> {{ implode(', ', $student->attendance_dates ?? []) }}</p>
                                                     @endif
                                                 </div>
                                             </div>
