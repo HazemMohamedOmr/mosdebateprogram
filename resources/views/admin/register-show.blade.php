@@ -35,7 +35,10 @@
                             <p><strong>التخصص الجامعي:</strong> {{ $invitation->university_specialization }}</p>
                             <p><strong>قائد الفريق:</strong> {{ $invitation->team_leader ?? 'غير محدد' }}</p>
                             <p><strong>حالة الدعوة</strong> {{ $invitation->is_invited ? 'تم الدعوة' : 'لم يتم الدعوة' }}</p>
-                            <p><strong>حضور:</strong> {{ $invitation->attend ? 'نعم' : 'لا' }}</p>
+                            <p><strong>حضور:</strong> {{ $invitation->attended ? 'نعم' : 'لا' }}</p>
+                            @if($invitation->attended)
+                                <p><strong>أيام الحضور:</strong> {{ implode(', ', json_decode($invitation->attendance_dates, true)) }}</p>
+                            @endif
 
 
                             <div class="row">
@@ -64,6 +67,9 @@
                                                     <p><strong>الخبرة:</strong> {{ $student->experience ?? 'لا يوجد' }}</p>
                                                     <p><strong>حالة الدعوة</strong> {{ $student->is_invited ? 'تم الدعوة' : 'لم يتم الدعوة' }}</p>
                                                     <p><strong>حضور:</strong> {{ $student->attend ? 'نعم' : 'لا' }}</p>
+                                                    @if($student->attend)
+                                                        <p><strong>أيام الحضور:</strong> {{ implode(', ', json_decode($student->attendance_dates, true)) }}</p>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
