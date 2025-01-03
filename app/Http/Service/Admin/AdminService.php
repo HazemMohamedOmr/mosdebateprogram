@@ -8,6 +8,42 @@ use Illuminate\Http\JsonResponse;
 
 class AdminService
 {
+    public function eventDate($request)
+    {
+        // Custom validation messages
+        $messages = [
+            'startRange.required' => 'تاريخ البداية مطلوب.',
+            'startRange.date' => 'تاريخ البداية يجب أن يكون تاريخًا صحيحًا.',
+            'endRange.required' => 'تاريخ النهاية مطلوب.',
+            'endRange.date' => 'تاريخ النهاية يجب أن يكون تاريخًا صحيحًا.',
+            'endRange.after_or_equal' => 'تاريخ النهاية يجب أن يكون مساويًا أو بعد تاريخ البداية.',
+        ];
+
+        // Validate the request
+        $validated = $request->validate([
+            'startRange' => 'required|date',
+            'endRange' => 'required|date|after_or_equal:startRange',
+        ], $messages);
+
+        try {
+            // Save start_range
+            Setting::updateOrCreate(
+                ['key' => 'start_range'], ['value' => $validated['startRange']]
+            );
+
+            // Save end_range
+            Setting::updateOrCreate(
+                ['key' => 'end_range'], ['value' =>  $validated['endRange']]
+            );
+
+            // Return success message
+            return redirect()->back()->with('event_date_success', 'تم تحديث إعدادات الحدث بنجاح.');
+        } catch (\Exception $e) {
+            // Return failure message if saving to the database fails
+            return redirect()->back()->with('event_date_failed', 'حدث خطأ أثناء حفظ الإعدادات. يرجى المحاولة مرة أخرى.');
+        }
+    }
+
     public function toggleForm($request, $formType): JsonResponse
     {
         // Map form types to descriptive keys
@@ -46,6 +82,12 @@ class AdminService
         $invitationFormStatus = Setting::where('key', 'invitation_form')->value('value') ?? false;
         $studentsFormStatus = Setting::where('key', 'students_form')->value('value') ?? false;
 
-        return view('admin.dashboard', compact('visitors', 'groups', 'invitationFormStatus', 'studentsFormStatus'));
+        $startRange = Setting::where('key', 'start_range')->value('value');
+        $endRange = Setting::where('key', 'end_range')->value('value');
+
+//        dd(Setting::all());
+
+        return view('admin.dashboard',
+            compact('visitors', 'groups', 'invitationFormStatus', 'studentsFormStatus', 'startRange', 'endRange'));
     }
 }

@@ -14,6 +14,7 @@
     <!-- Nucleo Icons -->
     <link href="{{ asset('assets') }}/css/nucleo-icons.css" rel="stylesheet" />
     <link href="{{ asset('assets') }}/css/nucleo-svg.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
     <!-- Font Awesome Icons -->
     <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
     <!-- Material Icons -->
@@ -30,10 +31,52 @@
 <script src="{{ asset('assets') }}/js/plugins/perfect-scrollbar.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/smooth-scrollbar.min.js"></script>
 <script src="{{ asset('assets') }}/js/plugins/chartjs.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://npmcdn.com/flatpickr/dist/l10n/ar.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="{{ asset('assets') }}/js/admin.js"></script>
 
+@if(session('event_date_success'))
+    <script>
+        Swal.fire({
+            title: 'تم بنجاح!',
+            text: '{{ session('event_date_success') }}',
+            icon: 'success',
+            confirmButtonText: 'موافق'
+        });
+    </script>
+@endif
+
+@if(session('event_date_failed'))
+    <script>
+        Swal.fire({
+            title: 'خطأ!',
+            text: '{{ session('event_date_failed') }}',
+            icon: 'error',
+            confirmButtonText: 'موافق'
+        });
+    </script>
+@endif
+
+@if ($errors->any())
+    <script>
+        Swal.fire({
+            title: 'خطأ في الإدخال!',
+            text: '{{ implode(", ", $errors->all()) }}',
+            icon: 'error',
+            confirmButtonText: 'موافق'
+        });
+    </script>
+@endif
+
 <script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        flatpickr(".datepicker", {
+            dateFormat: "Y-m-d",
+            locale: "ar"
+        });
+    });
 
     var ctx = document.getElementById("chart-bars").getContext("2d");
 

@@ -9,7 +9,7 @@ class Setting extends Model
     protected $fillable = ['key', 'value'];
 
     protected $casts = [
-        'value' => 'boolean',
+        'value' => 'string',
     ];
 
     public static function isFormOpen($formKey)
