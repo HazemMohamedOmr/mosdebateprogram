@@ -14,8 +14,13 @@
                 <div class="card">
                     <div class="card-header pb-0">
                         <div class="row mb-3">
-                            <div class="col">
+                            <div class="col d-flex justify-content-between align-items-center">
                                 <h6>المجموعات</h6>
+                                <div class="">
+                                    <button class="btn btn-primary btn-icon">
+                                        <i class="material-icons">download</i> استخراج
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>
