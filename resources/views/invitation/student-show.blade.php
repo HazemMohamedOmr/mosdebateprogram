@@ -25,7 +25,7 @@
                 <div class="card-header text-center">
                     <h3>تفاصيل الدعوة</h3>
                 </div>
-                <div class="card-body">
+                <div class="card-body d-flex flex-column align-items-center">
                     <!-- Personal Photo -->
                     @if ($student->personal_photo)
                         <img src="{{ asset('storage/' . $student->personal_photo) }}" alt="صورة العضو"

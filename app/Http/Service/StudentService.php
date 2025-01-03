@@ -120,8 +120,30 @@ class StudentService
             return view('invitation.not-found');
         }
 
-        $student->attend = 1;
-        $student->save();
+        $today = Carbon::today(); // Get today's date
+        $startDate = Carbon::parse(Setting::where('key', 'start_range')->value('value')); // Parse the start date
+        $endDate = Carbon::parse(Setting::where('key', 'end_range')->value('value')); // Parse the end date
+
+        // Check if today is within the start and end dates
+        if ($today->between($startDate, $endDate)) {
+
+            // Decode the attendance_date JSON to an array
+            $attendanceDates = $student->attendance_dates ? json_decode($student->attendance_dates, true) : [];
+
+            // Check if today's date is already in the array
+            if (!in_array($today->format('Y-m-d'), $attendanceDates)) {
+
+                // Mark this invitation as attended
+                $student->attend = 1;
+
+                // Add today's date to the array
+                $attendanceDates[] = $today->format('Y-m-d');
+
+                // Save the updated JSON back to the database
+                $student->attendance_dates = json_encode($attendanceDates);
+                $student->save();
+            }
+        }
 
         // Pass the invitation and related students to the view
         return view('invitation.student-show', compact('student'));

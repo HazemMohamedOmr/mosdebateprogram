@@ -21,6 +21,11 @@ class AdminController extends Controller
         return $this->adminService->toggleForm($request, $formType);
     }
 
+    public function eventDate(Request $request)
+    {
+        return $this->adminService->eventDate($request);
+    }
+
     public function index()
     {
         return $this->adminService->index();

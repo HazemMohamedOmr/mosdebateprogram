@@ -40,7 +40,10 @@
                             <p><strong>تاريخ التخرج:</strong> {{ $invitation->graduation_date }}</p>
                             <p><strong>كيف سمعت عن البرنامج:</strong> {{ implode(', ', json_decode($invitation->heard_about, true) ?? []) }}</p>
                             <p><strong>سبب الحضور:</strong> {{ implode(', ', json_decode($invitation->reason_participation, true) ?? []) }}</p>
-                            <p><strong>حضور:</strong> {{ $invitation->attend ? 'نعم' : 'لا' }}</p>
+                            <p><strong>حضور:</strong> {{ $invitation->attended ? 'نعم' : 'لا' }}</p>
+                            @if($invitation->attended)
+                                <p><strong>أيام الحضور:</strong> {{ implode(', ', json_decode($invitation->attendance_dates, true)) }}</p>
+                            @endif
                         </div>
 
                     </div>

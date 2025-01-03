@@ -63,6 +63,8 @@ Route::prefix('admin')->group(function () {
 
         Route::post('/toggle-form/{formType}', [AdminController::class, 'toggleForm'])->name('admin.toggleForm');
 
+        Route::post('/event-date', [AdminController::class, 'eventDate'])->name('admin.eventDate');
+
         Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
         Route::get('/visitors/{id}', [AdminVisitorController::class, 'show'])->name('admin.visitors.show');
 
