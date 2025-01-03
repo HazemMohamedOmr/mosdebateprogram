@@ -105,7 +105,32 @@ class InvitationService
             return view('invitation.not-found');
         }
 
-        $invitation->attended = 1;
+        $today = Carbon::today(); // Get today's date
+        $startDate = Carbon::parse(Setting::where('key', 'start_range')->value('value')); // Parse the start date
+        $endDate = Carbon::parse(Setting::where('key', 'end_range')->value('value')); // Parse the end date
+
+        // Check if today is within the start and end dates
+        if ($today->between($startDate, $endDate)) {
+
+            // Decode the attendance_date JSON to an array
+            $attendanceDates = $invitation->attendance_dates ? json_decode($invitation->attendance_dates, true) : [];
+
+            // Check if today's date is already in the array
+            if (!in_array($today->format('Y-m-d'), $attendanceDates)) {
+
+                // Mark this invitation as attended
+                $invitation->attended = 1;
+
+                // Add today's date to the array
+                $attendanceDates[] = $today->format('Y-m-d');
+
+                // Save the updated JSON back to the database
+                $invitation->attendance_dates = json_encode($attendanceDates);
+                $invitation->save();
+            }
+        }
+
+
         $invitation->save();
 
         // Format the graduation_date to "mm-yyyy"
