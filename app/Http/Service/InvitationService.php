@@ -113,7 +113,7 @@ class InvitationService
         if ($today->between($startDate, $endDate)) {
 
             // Decode the attendance_date JSON to an array
-            $attendanceDates = $invitation->attendance_dates ? json_decode($invitation->attendance_dates, true) : [];
+            $attendanceDates = $invitation->attendance_dates ?? [];
 
             // Check if today's date is already in the array
             if (!in_array($today->format('Y-m-d'), $attendanceDates)) {
@@ -125,7 +125,7 @@ class InvitationService
                 $attendanceDates[] = $today->format('Y-m-d');
 
                 // Save the updated JSON back to the database
-                $invitation->attendance_dates = json_encode($attendanceDates);
+                $invitation->attendance_dates = $attendanceDates;
                 $invitation->save();
             }
         }

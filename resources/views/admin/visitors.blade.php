@@ -17,9 +17,9 @@
                             <div class="col d-flex justify-content-between align-items-center">
                                 <h6>الزائرين</h6>
                                 <div class="">
-                                    <button class="btn btn-primary btn-icon">
-                                        <i class="material-icons">download</i> استخراج
-                                    </button>
+                                    <a class="btn btn-primary btn-icon" href="{{ route('admin.visitors.exports') }}">
+                                        <i class="material-icons">download</i>  استخراج البيانات
+                                    </a>
                                 </div>
                             </div>
                         </div>

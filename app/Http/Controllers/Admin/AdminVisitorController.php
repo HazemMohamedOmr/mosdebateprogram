@@ -27,4 +27,9 @@ class AdminVisitorController extends Controller
         return $this->adminService->show($id);
     }
 
+    public function exports()
+    {
+        return $this->adminService->exports();
+    }
+
 }

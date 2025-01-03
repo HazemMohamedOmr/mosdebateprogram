@@ -2,7 +2,9 @@
 
 namespace App\Http\Service\Admin;
 
+use App\Exports\VisitorExport;
 use App\Models\Invitations;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminVisitorService
 {
@@ -19,6 +21,11 @@ class AdminVisitorService
         $invitation = Invitations::find($id);
 
         return view('admin.visitors-show', compact('invitation'));
+    }
+
+    public function exports()
+    {
+        return Excel::download(new VisitorExport, 'visitor.xlsx');
     }
 
 }

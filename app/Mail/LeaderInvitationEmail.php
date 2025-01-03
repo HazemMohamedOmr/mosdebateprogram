@@ -7,7 +7,7 @@ use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class StudentInvitationEmail extends Mailable
+class LeaderInvitationEmail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -26,7 +26,7 @@ class StudentInvitationEmail extends Mailable
      */
     public function build()
     {
-        $view = 'emails.team_invitation_email';
+        $view = 'emails.leader_invitation_email';
         $link = route('team-invitation-qrcode', ['uuid' => $this->invitation->invitation_key]);
         return $this->subject('دعوة دوري المناظرات')
             ->view($view)

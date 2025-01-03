@@ -42,7 +42,7 @@
                             <p><strong>سبب الحضور:</strong> {{ implode(', ', json_decode($invitation->reason_participation, true) ?? []) }}</p>
                             <p><strong>حضور:</strong> {{ $invitation->attended ? 'نعم' : 'لا' }}</p>
                             @if($invitation->attended)
-                                <p><strong>أيام الحضور:</strong> {{ implode(', ', json_decode($invitation->attendance_dates, true)) }}</p>
+                                <p><strong>أيام الحضور:</strong> {{ implode(', ', $invitation->attendance_dates ?? []) }}</p>
                             @endif
                         </div>
 
