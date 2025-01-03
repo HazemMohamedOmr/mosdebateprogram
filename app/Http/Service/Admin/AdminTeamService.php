@@ -3,7 +3,7 @@
 namespace App\Http\Service\Admin;
 
 use App\Exports\TeamExport;
-use App\Mail\InvitationEmail;
+use App\Mail\LeaderInvitationEmail;
 use App\Mail\StudentInvitationEmail;
 use App\Models\Invitations;
 use App\Models\Student;
@@ -51,7 +51,7 @@ class AdminTeamService
     private function sendInvitationEmail($invitation)
     {
         try {
-            Mail::to($invitation->email)->send(new InvitationEmail($invitation, 1));
+            Mail::to($invitation->email)->send(new LeaderInvitationEmail($invitation));
             $invitation->is_invited = 1;
         } catch (\Exception $e) {
             Log::error($e);
