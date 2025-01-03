@@ -18,7 +18,7 @@
                                 <h6>المجموعات</h6>
                                 <div class="">
                                     <button class="btn btn-primary btn-icon">
-                                        <i class="material-icons">download</i> استخراج
+                                        <i class="material-icons">download</i>  استخراج البيانات
                                     </button>
                                 </div>
                             </div>

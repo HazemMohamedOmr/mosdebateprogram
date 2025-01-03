@@ -67,6 +67,7 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
         Route::get('/visitors/{id}', [AdminVisitorController::class, 'show'])->name('admin.visitors.show');
+        Route::get('/visitors-exports', [AdminVisitorController::class, 'exports'])->name('admin.visitors.exports');
 
         Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
         Route::get('/register/{id}', [AdminTeamController::class, 'show'])->name('admin.register.show');
