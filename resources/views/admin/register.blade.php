@@ -17,9 +17,9 @@
                             <div class="col d-flex justify-content-between align-items-center">
                                 <h6>المجموعات</h6>
                                 <div class="">
-                                    <button class="btn btn-primary btn-icon">
+                                    <a class="btn btn-primary btn-icon" href="{{ route('admin.register.exports') }}">
                                         <i class="material-icons">download</i>  استخراج البيانات
-                                    </button>
+                                    </a>
                                 </div>
                             </div>
                         </div>

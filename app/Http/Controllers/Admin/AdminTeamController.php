@@ -33,4 +33,9 @@ class AdminTeamController extends Controller
         return $this->adminService->invitation($request);
     }
 
+    public function exports()
+    {
+        return $this->adminService->exports();
+    }
+
 }

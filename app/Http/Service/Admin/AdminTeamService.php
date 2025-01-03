@@ -2,6 +2,7 @@
 
 namespace App\Http\Service\Admin;
 
+use App\Exports\TeamExport;
 use App\Mail\InvitationEmail;
 use App\Mail\StudentInvitationEmail;
 use App\Models\Invitations;
@@ -9,6 +10,7 @@ use App\Models\Student;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
+use Maatwebsite\Excel\Facades\Excel;
 
 class AdminTeamService
 {
@@ -68,6 +70,11 @@ class AdminTeamService
         }
 
         $invitation->save();
+    }
+
+    public function exports()
+    {
+        return Excel::download(new TeamExport, 'teams.xlsx');
     }
 
 }

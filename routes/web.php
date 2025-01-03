@@ -72,6 +72,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
         Route::get('/register/{id}', [AdminTeamController::class, 'show'])->name('admin.register.show');
         Route::post('/invitation', [AdminTeamController::class, 'invitation'])->name('admin.send.invitation');
+        Route::get('/register-exports', [AdminTeamController::class, 'exports'])->name('admin.register.exports');
 
         Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
     });
