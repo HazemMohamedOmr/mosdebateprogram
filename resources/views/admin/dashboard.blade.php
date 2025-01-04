@@ -23,15 +23,11 @@
                             <div class="text-start pt-1">
                                 <p class="text-lg mb-0">الزائرين</p>
                                 <h4 class="mb-0">
-                                    {{--                                <span class="text-danger text-sm font-weight-bolder ms-1">-2%</span>--}}
                                     {{ $visitors }}
                                 </h4>
                             </div>
                         </div>
-                        {{--                    <hr class="dark horizontal my-0">--}}
                         <div class="card-footer p-1">
-                            {{--                        <p class="mb-0 text-start"><span class="text-success text-sm font-weight-bolder ms-1">+5%--}}
-                            {{--                                </span>من الشهر الماضي</p>--}}
                         </div>
                     </div>
                 </div>
@@ -46,6 +42,8 @@
                                 <p class="text-lg mb-0">الفرق الجماعية</p>
                                 <h4 class="mb-0">{{ $groups }}</h4>
                             </div>
+                        </div>
+                        <div class="card-footer p-1">
                         </div>
                     </div>
                 </div>

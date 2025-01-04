@@ -4,6 +4,8 @@ namespace App\Http\Service\Admin;
 
 use App\Models\Invitations;
 use App\Models\Setting;
+use App\Models\Student;
+use Carbon\Carbon;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\RedirectResponse;
 
@@ -33,7 +35,7 @@ class AdminService
 
             // Save end_range
             Setting::updateOrCreate(
-                ['key' => 'end_range'], ['value' =>  $validated['endRange']]
+                ['key' => 'end_range'], ['value' => $validated['endRange']]
             );
 
             // Return success message
@@ -76,8 +78,51 @@ class AdminService
         $visitors = Invitations::where('type', 0)->count();
         $groups = Invitations::where('type', 1)->count();
 
+        list($is_range_set, $ranges) = $this->prepareRange();
+
         return view('admin.dashboard',
-            compact('visitors', 'groups'));
+            compact('visitors', 'groups', 'is_range_set', 'ranges'));
+    }
+
+    private function prepareRange(): array
+    {
+        $start_range = Setting::where('key', 'start_range')->value('value');
+        $end_range = Setting::where('key', 'end_range')->value('value');
+
+        $is_range_set = false;
+        $ranges = collect([]);
+        if (isset($start_range) && isset($end_range)) {
+            $visitors = Invitations::where('type', 0)->where('attendance_dates', '!=', null)->get();
+            $leaders = Invitations::where('type', 1)->where('attendance_dates', '!=', null)->get();
+            $students = Student::where('attendance_dates', '!=', null)->get();
+
+            $is_range_set = true;
+            $start_range = Carbon::make($start_range);
+            $end_range = Carbon::make($end_range);
+
+            for ($date = $start_range; $date->lte($end_range); $date->addDay()) {
+                $target_date = $date->toDateString();
+                $visitors_count = $visitors->filter(function ($item) use ($target_date) {
+                    return in_array($target_date, $item->attendance_dates ?? []);
+                })->count();
+
+                $leaders_count = $leaders->filter(function ($item) use ($target_date) {
+                    return in_array($target_date, $item->attendance_dates ?? []);
+                })->count();
+
+                $student_count = $students->filter(function ($item) use ($target_date) {
+                    return in_array($target_date, $item->attendance_dates ?? []);
+                })->count();
+
+                $ranges->push((object)[
+                    'date' => $target_date,
+                    'visitors_count' => $visitors_count,
+                    'team_count' => $leaders_count + $student_count,
+                ]);
+            }
+        }
+
+        return [$is_range_set, $ranges];
     }
 
     public function settings()
@@ -86,10 +131,10 @@ class AdminService
         $invitationFormStatus = Setting::where('key', 'invitation_form')->value('value') ?? false;
         $studentsFormStatus = Setting::where('key', 'students_form')->value('value') ?? false;
 
-        $startRange = Setting::where('key', 'start_range')->value('value');
-        $endRange = Setting::where('key', 'end_range')->value('value');
+        $start_range = Setting::where('key', 'start_range')->value('value');
+        $end_range = Setting::where('key', 'end_range')->value('value');
 
         return view('admin.settings',
-            compact('invitationFormStatus', 'studentsFormStatus', 'startRange', 'endRange'));
+            compact('invitationFormStatus', 'studentsFormStatus', 'start_range', 'end_range'));
     }
 }

@@ -89,7 +89,7 @@
                                             </div>
                                             <div>
                                                 <input type="text" id="startRange" name="startRange" class="form-control datepicker" style="direction: ltr"
-                                                       placeholder="اختر تاريخ البداية" value="{{ $startRange ?? '' }}">
+                                                       placeholder="اختر تاريخ البداية" value="{{ $start_range ?? '' }}">
                                             </div>
                                         </div>
                                     </div>
@@ -105,7 +105,7 @@
                                             </div>
                                             <div class="d-flex justify-content-center">
                                                 <input type="text" id="endRange" name="endRange" class="form-control datepicker" style="direction: ltr"
-                                                       placeholder="اختر تاريخ النهاية" value="{{ $endRange ?? '' }}">
+                                                       placeholder="اختر تاريخ النهاية" value="{{ $end_range ?? '' }}">
                                             </div>
                                         </div>
                                     </div>
