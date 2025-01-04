@@ -49,6 +49,9 @@
                 </div>
             </div>
 
+
+            @include('admin.statistics')
+
             @include('admin.partials.footer')
 
         </div>

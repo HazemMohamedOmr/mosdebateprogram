@@ -30,23 +30,23 @@
                                 <thead>
                                 <tr>
                                     <th style="width: 20%;"
-                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-uppercase text-secondary text-xx font-weight-bolder opacity-7">
                                         الاسم
                                     </th>
                                     <th style="width: 20%;"
-                                        class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">
+                                        class="text-uppercase text-secondary text-xx font-weight-bolder opacity-7 ps-2">
                                         البريد الالكتروني
                                     </th>
                                     <th style="width: 20%;"
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-center text-uppercase text-secondary text-xx font-weight-bolder opacity-7">
                                         الجامعة و التخصص
                                     </th>
                                     <th style="width: 20%;"
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-center text-uppercase text-secondary text-xx font-weight-bolder opacity-7">
                                         رقم الهاتف
                                     </th>
                                     <th style="width: 20%;"
-                                        class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">
+                                        class="text-center text-uppercase text-secondary text-xx font-weight-bolder opacity-7">
                                         خيارات
                                     </th>
                                 </tr>
