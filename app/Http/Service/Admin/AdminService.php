@@ -5,12 +5,12 @@ namespace App\Http\Service\Admin;
 use App\Models\Invitations;
 use App\Models\Setting;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 
 class AdminService
 {
-    public function eventDate($request)
+    public function eventDate($request): RedirectResponse
     {
-        // Custom validation messages
         $messages = [
             'startRange.required' => 'تاريخ البداية مطلوب.',
             'startRange.date' => 'تاريخ البداية يجب أن يكون تاريخًا صحيحًا.',
@@ -46,7 +46,6 @@ class AdminService
 
     public function toggleForm($request, $formType): JsonResponse
     {
-        // Map form types to descriptive keys
         $formKeys = [
             'invitation' => 'invitation_form',
             'students' => 'students_form',
@@ -74,10 +73,15 @@ class AdminService
 
     public function index()
     {
-        // Count visitors (type 0) and groups/students (type 1)
         $visitors = Invitations::where('type', 0)->count();
         $groups = Invitations::where('type', 1)->count();
 
+        return view('admin.dashboard',
+            compact('visitors', 'groups'));
+    }
+
+    public function settings()
+    {
         // Get the form statuses
         $invitationFormStatus = Setting::where('key', 'invitation_form')->value('value') ?? false;
         $studentsFormStatus = Setting::where('key', 'students_form')->value('value') ?? false;
@@ -85,9 +89,7 @@ class AdminService
         $startRange = Setting::where('key', 'start_range')->value('value');
         $endRange = Setting::where('key', 'end_range')->value('value');
 
-//        dd(Setting::all());
-
-        return view('admin.dashboard',
-            compact('visitors', 'groups', 'invitationFormStatus', 'studentsFormStatus', 'startRange', 'endRange'));
+        return view('admin.settings',
+            compact('invitationFormStatus', 'studentsFormStatus', 'startRange', 'endRange'));
     }
 }
