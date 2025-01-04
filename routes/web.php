@@ -19,10 +19,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/foo', function () {
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
-});
-
 Route::get('/', function () {
     return view('welcome');
 });
@@ -60,6 +56,7 @@ Route::prefix('admin')->group(function () {
     Route::middleware('auth')->group(function () {
 
         Route::get('/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+        Route::get('/settings', [AdminController::class, 'settings'])->name('admin.settings');
 
         Route::post('/toggle-form/{formType}', [AdminController::class, 'toggleForm'])->name('admin.toggleForm');
 

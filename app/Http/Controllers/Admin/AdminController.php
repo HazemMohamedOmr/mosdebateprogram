@@ -31,4 +31,9 @@ class AdminController extends Controller
         return $this->adminService->index();
     }
 
+    public function settings()
+    {
+        return $this->adminService->settings();
+    }
+
 }

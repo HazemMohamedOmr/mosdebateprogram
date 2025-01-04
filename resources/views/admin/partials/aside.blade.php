@@ -36,6 +36,15 @@
                     <span class="nav-link-text me-1">المجموعات</span>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a class="nav-link {{ Route::currentRouteName() == 'settings' ? 'active' : '' }}" href="{{ route('admin.settings') }}">
+                    <div class="text-white text-center ms-2 d-flex align-items-center justify-content-center">
+                        <i class="material-icons-round opacity-10">settings</i>
+                    </div>
+                    <span class="nav-link-text me-1">اعدادات</span>
+                </a>
+            </li>
         </ul>
     </div>
 </aside>
