@@ -27,7 +27,7 @@ class LeaderInvitationEmail extends Mailable
     public function build()
     {
         $view = 'emails.leader_invitation_email';
-        $link = route('team-invitation-qrcode', ['uuid' => $this->invitation->invitation_key]);
+        $link = route('visitor-invitation-qrcode', ['uuid' => $this->invitation->invitation_key]);
         return $this->subject('دعوة دوري المناظرات')
             ->view($view)
             ->with('invitation', $this->invitation)
