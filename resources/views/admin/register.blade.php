@@ -77,23 +77,24 @@
                                         <td class="align-middle">
 
                                             <div class="d-flex justify-content-center">
-                                                <a class=""
+                                                <a class="mx-2" title="أظهر البيانات"
                                                    href="{{ route('admin.register.show', ['id' => $invitation->id]) }}">
                                                     <i class="material-icons opacity-10">visibility</i>
                                                 </a>
 
-                                                <a class="mx-2" href="#" data-bs-toggle="modal"
+                                                <a class="mx-2" title="أرسل دعوات" href="#" data-bs-toggle="modal"
                                                    data-bs-target="#exampleModal-{{$invitation->id}}">
                                                     <i class="material-icons opacity-10">mail</i>
                                                 </a>
 
-                                                <a class="mx-2" href="{{ route('admin.register.delete', ['id' => $invitation->id]) }}">
+                                                <a class="mx-2" title="حذف" href="#" data-bs-toggle="modal"
+                                                   data-bs-target="#deleteRegistrationModal-{{$invitation->id}}">
                                                     <i class="material-icons opacity-10">delete</i>
                                                 </a>
                                             </div>
 
                                             @include('admin.register-invite-modal')
-
+                                            @include('admin.remove-register-modal')
                                         </td>
                                     </tr>
                                 @endforeach

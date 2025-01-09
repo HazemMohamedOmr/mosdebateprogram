@@ -75,14 +75,16 @@
                                         <td class="align-middle">
 
                                             <div class="d-flex justify-content-center">
-                                                <a class="" href="{{ route('admin.visitors.show', ['id' => $invitation->id]) }}">
+                                                <a class="mx-2" href="{{ route('admin.visitors.show', ['id' => $invitation->id]) }}" title="أظهر البيانات">
                                                     <i class="material-icons opacity-10">visibility</i>
                                                 </a>
-                                                <a class="mx-3" href="{{ route('admin.visitors.delete', ['id' => $invitation->id]) }}">
+                                                <a class="mx-2"title="حذف" href="#" data-bs-toggle="modal"
+                                                   data-bs-target="#deleteInvitationModal-{{$invitation->id}}">
                                                     <i class="material-icons opacity-10">delete</i>
                                                 </a>
                                             </div>
 
+                                            @include('admin.remove-invite-modal')
                                         </td>
                                     </tr>
                                 @endforeach
