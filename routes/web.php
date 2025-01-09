@@ -66,6 +66,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/visitors/{id}', [AdminVisitorController::class, 'show'])->name('admin.visitors.show');
         Route::get('/visitors/{id}/delete', [AdminVisitorController::class, 'delete'])->name('admin.visitors.delete');
         Route::get('/visitors-exports', [AdminVisitorController::class, 'exports'])->name('admin.visitors.exports');
+        Route::get('/visitors-invitation/{id}', [AdminVisitorController::class, 'invitation'])->name('admin.visitors.invitation');
         Route::get('/visitors-statistics', [AdminVisitorController::class, 'statistics'])->name('admin.visitors.statistics');
 
         Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');

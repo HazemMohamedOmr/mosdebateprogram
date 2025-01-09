@@ -12,7 +12,7 @@
             </div>
             <div class="modal-footer d-flex justify-content-center">
                 <a type="button" class="btn btn-primary"
-                   href="">نعم</a>
+                   href="{{ route('admin.visitors.invitation', ['id' => $invitation->id]) }}">نعم</a>
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">لا</button>
             </div>
         </div>
