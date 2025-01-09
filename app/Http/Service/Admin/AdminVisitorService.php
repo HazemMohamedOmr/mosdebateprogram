@@ -60,9 +60,11 @@ class AdminVisitorService
         return redirect()->route('admin.visitors')->with('event_date_success', 'تم الحذف بنجاح');
     }
 
-    public function statistics()
+    public function statistics($date)
     {
-        return view('admin.visitors-statistics');
+        $invitations = Invitations::where('type', 0)->where('attendance_dates', 'LIKE', "%$date%")->paginate(10);
+
+        return view('admin.visitors-statistics', compact('invitations', 'date'));
     }
 
     public function exports()
