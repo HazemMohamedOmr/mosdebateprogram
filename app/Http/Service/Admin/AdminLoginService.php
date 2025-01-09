@@ -22,7 +22,7 @@ class AdminLoginService
             'password' => 'required',
         ]);
 
-        if (Auth::attempt($request->only('email', 'password'))) {
+        if (Auth::attempt($request->only('email', 'password'), true)) {
             return redirect()->route('admin.dashboard');
         }
 
