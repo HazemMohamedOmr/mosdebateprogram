@@ -62,7 +62,7 @@ class AdminTeamService
 
         $invitation->delete();
 
-        return redirect()->route('admin.register');
+        return redirect()->route('admin.register')->with('event_date_success', 'تم الحذف بنجاح');
     }
 
     public function invitation($request): JsonResponse

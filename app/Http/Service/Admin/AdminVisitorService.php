@@ -57,7 +57,7 @@ class AdminVisitorService
 
         $invitation->delete();
 
-        return redirect()->route('admin.visitors');
+        return redirect()->route('admin.visitors')->with('event_date_success', 'تم الحذف بنجاح');
     }
 
     public function statistics()
@@ -76,7 +76,7 @@ class AdminVisitorService
 
         $this->sendEmail($invitation);
 
-        return redirect()->route('admin.visitors');
+        return redirect()->route('admin.visitors')->with('event_date_success', 'تم ارسال الدعوة بنجاح');
     }
 
     private function sendEmail($invitation)
