@@ -39,9 +39,9 @@ class AdminTeamController extends Controller
         return $this->adminService->invitation($request);
     }
 
-    public function statistics()
+    public function statistics($date)
     {
-        return $this->adminService->statistics();
+        return $this->adminService->statistics($date);
     }
 
     public function exports()
