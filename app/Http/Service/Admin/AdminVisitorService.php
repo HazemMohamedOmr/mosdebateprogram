@@ -57,6 +57,10 @@ class AdminVisitorService
         return redirect()->route('admin.visitors');
     }
 
+    public function statistics()
+    {
+        return view('admin.visitors-statistics');
+    }
 
     public function exports()
     {

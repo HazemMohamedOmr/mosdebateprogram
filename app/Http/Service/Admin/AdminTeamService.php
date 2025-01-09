@@ -105,6 +105,11 @@ class AdminTeamService
         $invitation->save();
     }
 
+    public function statistics()
+    {
+        return view('admin.register-statistics');
+    }
+
     public function exports()
     {
         return Excel::download(new TeamExport, 'teams.xlsx');
