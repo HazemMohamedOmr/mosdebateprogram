@@ -64,12 +64,12 @@ Route::prefix('admin')->group(function () {
 
         Route::get('/visitors', [AdminVisitorController::class, 'index'])->name('admin.visitors');
         Route::get('/visitors/{id}', [AdminVisitorController::class, 'show'])->name('admin.visitors.show');
-        Route::delete('/visitors/{id}', [AdminVisitorController::class, 'delete'])->name('admin.visitors.delete');
+        Route::get('/visitors/{id}/delete', [AdminVisitorController::class, 'delete'])->name('admin.visitors.delete');
         Route::get('/visitors-exports', [AdminVisitorController::class, 'exports'])->name('admin.visitors.exports');
 
         Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
         Route::get('/register/{id}', [AdminTeamController::class, 'show'])->name('admin.register.show');
-        Route::delete('/register/{id}', [AdminTeamController::class, 'delete'])->name('admin.register.delete');
+        Route::get('/register/{id}/delete', [AdminTeamController::class, 'delete'])->name('admin.register.delete');
         Route::post('/invitation', [AdminTeamController::class, 'invitation'])->name('admin.send.invitation');
         Route::get('/register-exports', [AdminTeamController::class, 'exports'])->name('admin.register.exports');
 

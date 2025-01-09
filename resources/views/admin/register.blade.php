@@ -86,6 +86,10 @@
                                                    data-bs-target="#exampleModal-{{$invitation->id}}">
                                                     <i class="material-icons opacity-10">mail</i>
                                                 </a>
+
+                                                <a class="mx-2" href="{{ route('admin.register.delete', ['id' => $invitation->id]) }}">
+                                                    <i class="material-icons opacity-10">delete</i>
+                                                </a>
                                             </div>
 
                                             @include('admin.register-invite-modal')

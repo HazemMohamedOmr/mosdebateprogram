@@ -78,6 +78,9 @@
                                                 <a class="" href="{{ route('admin.visitors.show', ['id' => $invitation->id]) }}">
                                                     <i class="material-icons opacity-10">visibility</i>
                                                 </a>
+                                                <a class="mx-3" href="{{ route('admin.visitors.delete', ['id' => $invitation->id]) }}">
+                                                    <i class="material-icons opacity-10">delete</i>
+                                                </a>
                                             </div>
 
                                         </td>
