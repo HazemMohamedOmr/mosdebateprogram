@@ -35,14 +35,14 @@
                                 </td>
                                 <td class="text-center">
                                     <span class="text-xs font-weight-bold">
-                                        <a href="{{ route('admin.visitors.statistics') }}">
+                                        <a href="{{ route('admin.visitors.statistics', ['date' => $range->date]) }}">
                                             {{ $range->visitors_count }}
                                         </a>
                                     </span>
                                 </td>
                                 <td class="text-center">
                                     <span class="text-xs font-weight-bold">
-                                        <a href="{{ route('admin.register.statistics') }}">
+                                        <a href="{{ route('admin.register.statistics', ['date' => $range->date]) }}">
                                             {{ $range->team_count }}
                                         </a>
                                     </span>

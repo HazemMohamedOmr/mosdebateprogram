@@ -3,8 +3,11 @@
 namespace App\Http\Service\Admin;
 
 use App\Exports\VisitorExport;
+use App\Mail\InvitationEmail;
 use App\Models\Invitations;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
 use Illuminate\Support\Str;
 
@@ -54,7 +57,7 @@ class AdminVisitorService
 
         $invitation->delete();
 
-        return redirect()->route('admin.visitors');
+        return redirect()->route('admin.visitors')->with('event_date_success', 'تم الحذف بنجاح');
     }
 
     public function statistics()
@@ -66,5 +69,29 @@ class AdminVisitorService
     {
         return Excel::download(new VisitorExport, 'visitor.xlsx');
     }
+
+    public function invitation($id): RedirectResponse
+    {
+        $invitation = Invitations::find($id);
+
+        $this->sendEmail($invitation);
+
+        return redirect()->route('admin.visitors')->with('event_date_success', 'تم ارسال الدعوة بنجاح');
+    }
+
+    private function sendEmail($invitation)
+    {
+        try {
+            Mail::to($invitation->email)->send(new InvitationEmail($invitation, 1));
+            $invitation->is_email_send = 1;
+            $invitation->is_invited = 1;
+        } catch (\Exception $e) {
+            Log::error($e);
+            $invitation->is_email_send = 0;
+        }
+
+        $invitation->save();
+    }
+
 
 }

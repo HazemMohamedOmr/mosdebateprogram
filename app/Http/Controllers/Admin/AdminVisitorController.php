@@ -43,4 +43,9 @@ class AdminVisitorController extends Controller
         return $this->adminService->exports();
     }
 
+    public function invitation($id): RedirectResponse
+    {
+        return $this->adminService->invitation($id);
+    }
+
 }
