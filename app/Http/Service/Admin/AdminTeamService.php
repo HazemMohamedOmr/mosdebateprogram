@@ -12,12 +12,35 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
+use Illuminate\Support\Str;
 
 class AdminTeamService
 {
-    public function index()
+    public function index($request)
     {
-        $invitations = Invitations::where('type', 1)->with('students')->paginate(10);
+        $validated = $request->validate([
+            'search' => 'nullable|string|max:255',
+        ]);
+
+        $searchTerm = $validated['search'] ?? null;
+        if(isset($searchTerm)){
+            $searchTerm = filter_var($searchTerm, FILTER_SANITIZE_STRING);
+            $searchTerm = str_replace('%', '', $searchTerm);
+            $searchTerm = str_replace('\%', '', $searchTerm);
+            $searchTerm = Str::of($searchTerm)->trim();
+
+            $searchTerm = strip_tags($searchTerm ?? null);
+        }
+
+        $invitations = Invitations::where('type', 1)
+            ->when($searchTerm, function ($query, $searchTerm) {
+                $query->where(function ($query) use ($searchTerm) {
+                    $query->where('email', 'LIKE', "%$searchTerm%")
+                        ->orWhere('first_name', 'LIKE', "%$searchTerm%")
+                        ->orWhere('second_name', 'LIKE', "%$searchTerm%")
+                        ->orWhere('sur_name', 'LIKE', "%$searchTerm%");
+                });
+            })->with('students')->paginate(10);
 
         return view('admin.register', compact('invitations'));
     }

@@ -13,13 +13,23 @@
             <div class="">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <div class="row mb-3">
+                        <div class="row">
                             <div class="col d-flex justify-content-between align-items-center">
                                 <h6>المجموعات</h6>
                                 <div class="">
                                     <a class="btn btn-primary btn-icon" href="{{ route('admin.register.exports') }}">
                                         <i class="material-icons">download</i>  استخراج البيانات
                                     </a>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex flex-wrap justify-content-center align-items-center">
+                                <div class="ms-2 search-fun">
+                                    <form method="GET" action="{{ route('admin.register') }}" class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <input type="text" name="search" class="form-control me-2 search-input" placeholder="بحث بالاسم أو البريد الإلكتروني" value="{{ request('search') }}">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary me-3">يحث</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>

@@ -18,9 +18,9 @@ class AdminVisitorController extends Controller
         $this->adminService = $adminService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->adminService->index();
+        return $this->adminService->index($request);
     }
 
     public function show($id)
