@@ -48,4 +48,9 @@ class AdminVisitorController extends Controller
         return $this->adminService->invitation($id);
     }
 
+    public function thanksEmail()
+    {
+        return $this->adminService->thanksEmail();
+    }
+
 }

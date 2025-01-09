@@ -68,6 +68,7 @@ Route::prefix('admin')->group(function () {
         Route::get('/visitors-exports', [AdminVisitorController::class, 'exports'])->name('admin.visitors.exports');
         Route::get('/visitors-invitation/{id}', [AdminVisitorController::class, 'invitation'])->name('admin.visitors.invitation');
         Route::get('/visitors-statistics/{date}', [AdminVisitorController::class, 'statistics'])->name('admin.visitors.statistics');
+        Route::get('/visitors-thanks-mail', [AdminVisitorController::class, 'thanksEmail'])->name('admin.visitors.thanks-mail');
 
         Route::get('/register', [AdminTeamController::class, 'index'])->name('admin.register');
         Route::get('/register/{id}', [AdminTeamController::class, 'show'])->name('admin.register.show');
