@@ -3,7 +3,7 @@
 namespace App\Http\Service\Admin;
 
 use App\Exports\TeamExport;
-use App\Jobs\TeamsThanksJobs;
+use App\Jobs\AllTeamsThanksJobs;
 use App\Mail\LeaderInvitationEmail;
 use App\Mail\StudentInvitationEmail;
 use App\Models\Invitations;
@@ -122,52 +122,10 @@ class AdminTeamService
 
     public function thanksEmail(): RedirectResponse
     {
-//        $leaders = $this->getLeaders();
-        $leaders = $this->testsEmails();
-
-        foreach ($leaders as $leader) {
-            TeamsThanksJobs::dispatch($leader);
-        }
-
-//        $students = $this->getStudents();
-        $students = $this->testsEmails();
-
-        foreach ($students as $student) {
-            TeamsThanksJobs::dispatch($student);
-        }
+        AllTeamsThanksJobs::dispatch();
 
         return redirect()->route('admin.dashboard')->with('event_date_success', 'تم ارسال بريد الشكر للطلاب بنجاح');
     }
 
-    private function getLeaders()
-    {
-        return Invitations::where('type', 1)->where('attendance_dates', '!=', 'null')->get();
-    }
-
-    private function getStudents()
-    {
-        return Student::where('attendance_dates', '!=', 'null')->get();
-    }
-
-    private function testsEmails()
-    {
-        $visitors = collect([]);
-        $visitors->push((object)[
-            'first_name' => 'Sameh',
-            'email' => 'conan.sameh@gmail.com',
-        ]);
-
-        $visitors->push((object)[
-            'first_name' => 'Sameh Mo',
-            'email' => 'samehmohamedomar22@gmail.com',
-        ]);
-
-        $visitors->push((object)[
-            'first_name' => 'Sameh Omar',
-            'email' => 'samehomaratis@gmail.com',
-        ]);
-
-        return $visitors;
-    }
 
 }
