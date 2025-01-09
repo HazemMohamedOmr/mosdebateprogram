@@ -9,7 +9,7 @@
     <img src="{{ asset('images/public.png') }}" style="height: 200px !important; object-fit: cover !important;"  alt="">
 </div>
 
-<h1 style="text-align: right; margin-top: 0"> أهلا {{ $invitation['first_name'] }}  </h1>
+<h1 style="text-align: right; margin-top: 0"> أهلا {{ $invitation->first_name }}  </h1>
 <p style="text-align: center !important; font-size: 1rem !important;">شكرًا لحضوركم دوري مناظرات وزارة الرياضة</p>
 
 <p style="text-align: center !important; font-size: 1rem !important;">نشكر لكم لحضوركم برنامج دوري مناظرات وزارة الرياضة.</p>
@@ -33,7 +33,7 @@
     border-radius: 0.5rem;
     background-color: #0d6efd;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-" target="_blank" href="{{ $link }}">رابط الدعوة</a>
+" target="_blank" href="{{ $link }}">رابط الاستبيان</a>
 </div>
 
 </body>
