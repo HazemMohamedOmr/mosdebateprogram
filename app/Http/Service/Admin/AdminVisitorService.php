@@ -3,6 +3,7 @@
 namespace App\Http\Service\Admin;
 
 use App\Exports\VisitorExport;
+use App\Jobs\AllVisitorsThanksJobs;
 use App\Mail\InvitationEmail;
 use App\Models\Invitations;
 use Illuminate\Http\RedirectResponse;
@@ -20,7 +21,7 @@ class AdminVisitorService
         ]);
 
         $searchTerm = $validated['search'] ?? null;
-        if(isset($searchTerm)){
+        if (isset($searchTerm)) {
             $searchTerm = filter_var($searchTerm, FILTER_SANITIZE_STRING);
             $searchTerm = str_replace('%', '', $searchTerm);
             $searchTerm = str_replace('\%', '', $searchTerm);
@@ -95,5 +96,11 @@ class AdminVisitorService
         $invitation->save();
     }
 
+    public function thanksEmail(): RedirectResponse
+    {
+        AllVisitorsThanksJobs::dispatch();
+
+        return redirect()->route('admin.dashboard')->with('event_date_success', 'تم ارسال بريد الشكر للزوار بنجاح');
+    }
 
 }

@@ -49,4 +49,9 @@ class AdminTeamController extends Controller
         return $this->adminService->exports();
     }
 
+    public function thanksEmail()
+    {
+        return $this->adminService->thanksEmail();
+    }
+
 }

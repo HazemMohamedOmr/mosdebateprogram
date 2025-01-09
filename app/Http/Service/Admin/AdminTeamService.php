@@ -3,6 +3,7 @@
 namespace App\Http\Service\Admin;
 
 use App\Exports\TeamExport;
+use App\Jobs\AllTeamsThanksJobs;
 use App\Mail\LeaderInvitationEmail;
 use App\Mail\StudentInvitationEmail;
 use App\Models\Invitations;
@@ -23,7 +24,7 @@ class AdminTeamService
         ]);
 
         $searchTerm = $validated['search'] ?? null;
-        if(isset($searchTerm)){
+        if (isset($searchTerm)) {
             $searchTerm = filter_var($searchTerm, FILTER_SANITIZE_STRING);
             $searchTerm = str_replace('%', '', $searchTerm);
             $searchTerm = str_replace('\%', '', $searchTerm);
@@ -118,5 +119,13 @@ class AdminTeamService
     {
         return Excel::download(new TeamExport, 'teams.xlsx');
     }
+
+    public function thanksEmail(): RedirectResponse
+    {
+        AllTeamsThanksJobs::dispatch();
+
+        return redirect()->route('admin.dashboard')->with('event_date_success', 'تم ارسال بريد الشكر للطلاب بنجاح');
+    }
+
 
 }
