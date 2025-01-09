@@ -33,9 +33,9 @@ class AdminVisitorController extends Controller
         return $this->adminService->delete($id);
     }
 
-    public function statistics()
+    public function statistics($date)
     {
-        return $this->adminService->statistics();
+        return $this->adminService->statistics($date);
     }
 
     public function exports()
