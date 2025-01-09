@@ -76,6 +76,7 @@ Route::prefix('admin')->group(function () {
         Route::post('/invitation', [AdminTeamController::class, 'invitation'])->name('admin.send.invitation');
         Route::get('/register-exports', [AdminTeamController::class, 'exports'])->name('admin.register.exports');
         Route::get('/register-statistics/{date}', [AdminTeamController::class, 'statistics'])->name('admin.register.statistics');
+        Route::get('/register-thanks-mail', [AdminTeamController::class, 'thanksEmail'])->name('admin.register.thanks-mail');
 
 
         Route::post('/logout', [AdminLoginController::class, 'logout'])->name('admin.logout');
