@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Service\Admin\AdminService;
 use App\Http\Service\Admin\AdminVisitorService;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 
 class AdminVisitorController extends Controller
@@ -25,6 +26,11 @@ class AdminVisitorController extends Controller
     public function show($id)
     {
         return $this->adminService->show($id);
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        return $this->adminService->delete($id);
     }
 
     public function exports()

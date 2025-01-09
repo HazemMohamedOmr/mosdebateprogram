@@ -8,6 +8,7 @@ use App\Mail\StudentInvitationEmail;
 use App\Models\Invitations;
 use App\Models\Student;
 use Illuminate\Http\JsonResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 use Maatwebsite\Excel\Facades\Excel;
@@ -30,6 +31,15 @@ class AdminTeamService
         ]);
 
         return view('admin.register-show', compact('invitation'));
+    }
+
+    public function delete($id): RedirectResponse
+    {
+        $invitation = Invitations::find($id);
+
+        $invitation->delete();
+
+        return redirect()->route('admin.register');
     }
 
     public function invitation($request): JsonResponse
