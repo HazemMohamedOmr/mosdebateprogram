@@ -3,7 +3,7 @@
 namespace App\Http\Service\Admin;
 
 use App\Exports\VisitorExport;
-use App\Jobs\VisitorsThanksJobs;
+use App\Jobs\AllVisitorsThanksJobs;
 use App\Mail\InvitationEmail;
 use App\Models\Invitations;
 use Illuminate\Http\RedirectResponse;
@@ -98,40 +98,9 @@ class AdminVisitorService
 
     public function thanksEmail(): RedirectResponse
     {
-//        $visitors = $this->getVisitors();
-        $visitors = $this->testsEmails();
-
-        foreach ($visitors as $visitor) {
-            VisitorsThanksJobs::dispatch($visitor);
-        }
+        AllVisitorsThanksJobs::dispatch();
 
         return redirect()->route('admin.dashboard')->with('event_date_success', 'تم ارسال بريد الشكر للزوار بنجاح');
     }
-
-    private function getVisitors(){
-        return Invitations::where('type', 0)->where('attendance_dates', '!=', 'null')->get();
-    }
-
-    private function testsEmails()
-    {
-        $visitors = collect([]);
-        $visitors->push((object)[
-            'first_name' => 'Sameh',
-            'email' => 'conan.sameh@gmail.com',
-        ]);
-
-        $visitors->push((object)[
-            'first_name' => 'Sameh Mo',
-            'email' => 'samehmohamedomar22@gmail.com',
-        ]);
-
-        $visitors->push((object)[
-            'first_name' => 'Sameh Omar',
-            'email' => 'samehomaratis@gmail.com',
-        ]);
-
-        return $visitors;
-    }
-
 
 }
