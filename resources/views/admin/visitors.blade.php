@@ -13,13 +13,23 @@
             <div class="">
                 <div class="card">
                     <div class="card-header pb-0">
-                        <div class="row mb-3">
-                            <div class="col d-flex justify-content-between align-items-center">
-                                <h6>الزائرين</h6>
-                                <div class="">
+                        <div class="row">
+                            <div class="col d-flex flex-wrap justify-content-between align-items-center">
+                                <h6 class="">الزائرين</h6>
+                                <div class="ms-2">
                                     <a class="btn btn-primary btn-icon" href="{{ route('admin.visitors.exports') }}">
-                                        <i class="material-icons">download</i>  استخراج البيانات
+                                        <i class="material-icons">download</i> استخراج البيانات
                                     </a>
+                                </div>
+                            </div>
+                            <div class="col-12 d-flex flex-wrap justify-content-center align-items-center">
+                                <div class="ms-2 search-fun">
+                                    <form method="GET" action="{{ route('admin.visitors') }}" class="d-flex">
+                                        <div class="flex-grow-1">
+                                            <input type="text" name="search" class="form-control me-2 search-input" placeholder="بحث بالاسم أو البريد الإلكتروني" value="{{ request('search') }}">
+                                        </div>
+                                        <button type="submit" class="btn btn-primary me-3">يحث</button>
+                                    </form>
                                 </div>
                             </div>
                         </div>
@@ -75,14 +85,21 @@
                                         <td class="align-middle">
 
                                             <div class="d-flex justify-content-center">
-                                                <a class="" href="{{ route('admin.visitors.show', ['id' => $invitation->id]) }}">
+                                                <a class="mx-2" href="{{ route('admin.visitors.show', ['id' => $invitation->id]) }}" title="أظهر البيانات">
                                                     <i class="material-icons opacity-10">visibility</i>
                                                 </a>
-                                                <a class="mx-3" href="{{ route('admin.visitors.delete', ['id' => $invitation->id]) }}">
+                                                <a class="mx-2" title="أرسل دعوات" href="#" data-bs-toggle="modal"
+                                                   data-bs-target="#sendInvitationMail-{{$invitation->id}}">
+                                                    <i class="material-icons opacity-10">mail</i>
+                                                </a>
+                                                <a class="mx-2"title="حذف" href="#" data-bs-toggle="modal"
+                                                   data-bs-target="#deleteInvitationModal-{{$invitation->id}}">
                                                     <i class="material-icons opacity-10">delete</i>
                                                 </a>
                                             </div>
 
+                                            @include('admin.remove-invite-modal')
+                                            @include('admin.send-invitation-mail-modal')
                                         </td>
                                     </tr>
                                 @endforeach

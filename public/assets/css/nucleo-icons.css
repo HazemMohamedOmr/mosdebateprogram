@@ -595,3 +595,26 @@ License - nucleoapp.com/license/
 
 
 /* all icon font classes list here */
+.search-fun{
+    flex-basis: 50%;
+}
+
+.search-input {
+    border: 2px solid #9da1b4 !important; /* Add a distinct border */
+    border-radius: 5px !important; /* Round the corners */
+    padding: 0.4rem 10px !important; /* Add spacing inside the input */
+    outline: none !important; /* Remove default outline */
+    transition: border-color 0.3s, box-shadow 0.3s !important; /* Smooth transition effects */
+}
+
+.search-input:focus {
+    border-color: #cfd1da !important; /* Change border color on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5) !important; /* Add a glow effect */
+}
+
+
+@media (max-width: 768px) {
+    .search-fun{
+        flex-basis: 100%;
+    }
+}

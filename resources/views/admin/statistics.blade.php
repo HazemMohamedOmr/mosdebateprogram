@@ -34,10 +34,18 @@
                                     <span class="text-xs font-weight-bold">  {{ $range->date }} </span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="text-xs font-weight-bold">  {{ $range->visitors_count }} </span>
+                                    <span class="text-xs font-weight-bold">
+                                        <a href="{{ route('admin.visitors.statistics') }}">
+                                            {{ $range->visitors_count }}
+                                        </a>
+                                    </span>
                                 </td>
                                 <td class="text-center">
-                                    <span class="text-xs font-weight-bold">  {{ $range->team_count }} </span>
+                                    <span class="text-xs font-weight-bold">
+                                        <a href="{{ route('admin.register.statistics') }}">
+                                            {{ $range->team_count }}
+                                        </a>
+                                    </span>
                                 </td>
                             </tr>
                         @endforeach

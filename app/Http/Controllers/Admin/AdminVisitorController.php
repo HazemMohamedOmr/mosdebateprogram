@@ -18,9 +18,9 @@ class AdminVisitorController extends Controller
         $this->adminService = $adminService;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        return $this->adminService->index();
+        return $this->adminService->index($request);
     }
 
     public function show($id)
@@ -31,6 +31,11 @@ class AdminVisitorController extends Controller
     public function delete($id): RedirectResponse
     {
         return $this->adminService->delete($id);
+    }
+
+    public function statistics()
+    {
+        return $this->adminService->statistics();
     }
 
     public function exports()
