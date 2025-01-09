@@ -88,6 +88,10 @@
                                                 <a class="mx-2" href="{{ route('admin.visitors.show', ['id' => $invitation->id]) }}" title="أظهر البيانات">
                                                     <i class="material-icons opacity-10">visibility</i>
                                                 </a>
+                                                <a class="mx-2" title="أرسل دعوات" href="#" data-bs-toggle="modal"
+                                                   data-bs-target="#sendInvitationMail-{{$invitation->id}}">
+                                                    <i class="material-icons opacity-10">mail</i>
+                                                </a>
                                                 <a class="mx-2"title="حذف" href="#" data-bs-toggle="modal"
                                                    data-bs-target="#deleteInvitationModal-{{$invitation->id}}">
                                                     <i class="material-icons opacity-10">delete</i>
@@ -95,6 +99,7 @@
                                             </div>
 
                                             @include('admin.remove-invite-modal')
+                                            @include('admin.send-invitation-mail-modal')
                                         </td>
                                     </tr>
                                 @endforeach
