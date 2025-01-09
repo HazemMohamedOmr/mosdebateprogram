@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Invitations extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'first_name', 'second_name', 'sur_name', 'age_range', 'national_id',
         'email', 'phone_number', 'university_name', 'university_specialization', 'team_leader',

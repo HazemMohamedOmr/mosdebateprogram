@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Faker\Provider\Uuid;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Str;
 
 class Student extends Model
 {
+    use SoftDeletes;
     protected $fillable = [
         'form_entry_id', 'first_name', 'second_name', 'sur_name', 'gender',
         'personal_photo', 'age_range', 'national_id', 'email', 'phone_number',

@@ -4,6 +4,7 @@ namespace App\Http\Service\Admin;
 
 use App\Exports\VisitorExport;
 use App\Models\Invitations;
+use Illuminate\Http\RedirectResponse;
 use Maatwebsite\Excel\Facades\Excel;
 
 class AdminVisitorService
@@ -22,6 +23,16 @@ class AdminVisitorService
 
         return view('admin.visitors-show', compact('invitation'));
     }
+
+    public function delete($id): RedirectResponse
+    {
+        $invitation = Invitations::find($id);
+
+        $invitation->delete();
+
+        return redirect()->route('admin.visitors');
+    }
+
 
     public function exports()
     {
