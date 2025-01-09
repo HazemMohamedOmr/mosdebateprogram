@@ -111,7 +111,7 @@ class AdminTeamService
 
         $students = Student::where('attendance_dates', 'LIKE', "%$date%")->paginate(10);
 
-        return view('admin.register-statistics', compact('invitations', 'date', 'students'));
+        return view('admin.team.register-statistics.register-statistics', compact('invitations', 'date', 'students'));
     }
 
     public function exports()

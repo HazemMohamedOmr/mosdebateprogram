@@ -23,7 +23,7 @@ class Student extends Model
 
     public function Invitations()
     {
-        return $this->belongsTo(Invitations::class);
+        return $this->belongsTo(Invitations::class, 'invitations_id', 'id');
     }
 
     protected static function boot()
