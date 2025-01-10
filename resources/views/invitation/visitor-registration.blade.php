@@ -92,17 +92,76 @@
                         </div>
                     </div>
 
+                    <!-- Nationality -->
+                    <div class="form-group mb-3">
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fas fa-globe"></i></span>
+                            <div class="form-floating">
+                                <input type="text" id="nationality" name="nationality"
+                                       value="{{ old('nationality') }}" class="form-control"
+                                       placeholder="الجنسية" required>
+                                <label for="nationality">الجنسية <span class="mandatory">*</span></label>
+                            </div>
+                            <div class="invalid-feedback text-right">الرجاء إدخال الجنسية.</div>
+                        </div>
+                    </div>
+
+                    <!-- Card Type -->
+                    <div class="form-group mb-3">
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fas fa-calendar-alt"></i></span>
+                            <div class="form-floating">
+                                <select id="card_type" name="card_type" class="form-select" required>
+                                    <option value="" disabled selected>اختر نوع البطاقة</option>
+                                    <option value="0">بطاقة الهوية الوطنية</option>
+                                    <option value="1 ">جواز السفر</option>
+                                </select>
+                                <label for="card_type">نوع البطاقة <span class="mandatory">*</span></label>
+                            </div>
+                            <div class="invalid-feedback text-right">الرجاء اختيار نوع البطاقة.</div>
+                        </div>
+                    </div>
+
+
                     <!-- National ID -->
                     <div class="form-group mb-3">
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                            <span class="input-group-text"><i class="fa fa-id-badge"></i></span>
                             <div class="form-floating">
-                                <input type="text" id="national_id" maxlength="10" minlength="10" name="national_id"
+                                <input type="text" id="national_id" name="national_id"
                                        value="{{ old('national_id') }}" class="form-control"
-                                       placeholder="رقم الهوية الوطنية" required>
-                                <label for="national_id">رقم الهوية الوطنية <span class="mandatory">*</span></label>
+                                       placeholder="رقم الهوية الوطنية/ رقم الجواز" required>
+                                <label for="national_id">رقم الهوية الوطنية/ رقم الجواز <span class="mandatory">*</span></label>
                             </div>
-                            <div class="invalid-feedback text-right">الرجاء إدخال رقم الهوية.</div>
+                            <div class="invalid-feedback text-right">الرجاء إدخال رقم الهوية/ رقم الجواز.</div>
+                        </div>
+                    </div>
+
+                    <!--Region -->
+                    <div class="form-group mb-3">
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
+                            <div class="form-floating">
+                                <input type="text" id="region" name="region"
+                                       value="{{ old('region') }}" class="form-control"
+                                       placeholder="المنطقة" required>
+                                <label for="region">المنطقة <span class="mandatory">*</span></label>
+                            </div>
+                            <div class="invalid-feedback text-right">الرجاء إدخال المنطقة.</div>
+                        </div>
+                    </div>
+
+                    <!-- City -->
+                    <div class="form-group mb-3">
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fas fa-city" style="font-size: 0.8rem;"></i></span>
+                            <div class="form-floating">
+                                <input type="text" id="city" name="city"
+                                       value="{{ old('city') }}" class="form-control"
+                                       placeholder="المدينة" required>
+                                <label for="city">المدينة <span class="mandatory">*</span></label>
+                            </div>
+                            <div class="invalid-feedback text-right">الرجاء إدخال المدينة.</div>
                         </div>
                     </div>
 
@@ -131,14 +190,17 @@
                         </div>
                     </div>
 
-                    <!-- Phone Number with Country Code -->
-                    {{--                <div class="form-group mb-3">--}}
-                    {{--                    <div class="input-group has-validation">--}}
-                    {{--                        <label for="phone_number" class="d-block">رقم الهاتف *</label>--}}
-                    {{--                        <input type="tel" id="phone_number" name="phone_number" value="{{ old('phone_number') }}" class="form-control phone_input" required>--}}
-                    {{--                        <div class="invalid-feedback text-right">الرجاء إدخال رقم الهاتف.</div>--}}
-                    {{--                    </div>--}}
-                    {{--                </div>--}}
+                    <!-- Academic Qualifications -->
+                    <div class="form-group mb-3">
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fas fa-book"></i></span>
+                            <div class="form-floating">
+                                <input type="text" id="academic_qualifications" name="academic_qualifications"
+                                       value="{{ old('academic_qualifications') }}" class="form-control" placeholder="المؤهلات العلمية" required>
+                                <label for="academic_qualifications">المؤهلات العلمية <span class="mandatory">*</span></label>
+                            </div>
+                        </div>
+                    </div>
 
                     <!-- University Name -->
                     <div class="form-group mb-3">
@@ -146,8 +208,8 @@
                             <span class="input-group-text"><i class="fas fa-building"></i></span>
                             <div class="form-floating">
                                 <input type="text" id="university_name" name="university_name"
-                                       value="{{ old('university_name') }}" class="form-control" placeholder="اسم الجامعة">
-                                <label for="university_name">اسم الجامعة</label>
+                                       value="{{ old('university_name') }}" class="form-control" placeholder="اسم الجامعة" required>
+                                <label for="university_name">اسم الجامعة <span class="mandatory">*</span></label>
                             </div>
                         </div>
                     </div>
@@ -155,29 +217,41 @@
                     <!-- University Specialization -->
                     <div class="form-group mb-3">
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-book"></i></span>
+                            <span class="input-group-text" style="padding: 0.375rem 0.6rem;"><i class="fas fa-graduation-cap"></i></span>
                             <div class="form-floating">
                                 <input type="text" id="university_specialization" name="university_specialization"
                                        value="{{ old('university_specialization') }}" class="form-control"
-                                       placeholder="التخصص الجامعي">
-                                <label for="university_specialization">التخصص الجامعي</label>
+                                       placeholder="التخصص الجامعي" required>
+                                <label for="university_specialization">التخصص الجامعي <span class="mandatory">*</span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Employer -->
+                    <div class="form-group mb-3">
+                        <div class="input-group has-validation">
+                            <span class="input-group-text"><i class="fas fa-building"></i></span>
+                            <div class="form-floating">
+                                <input type="text" id="employer" name="employer"
+                                       value="{{ old('employer') }}" class="form-control" placeholder="جهة العمل" required>
+                                <label for="employer">جهة العمل <span class="mandatory">*</span></label>
                             </div>
                         </div>
                     </div>
 
                     <!-- Graduation Date -->
-                    <div class="form-group mb-3">
-                        <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>
-                            <div class="form-floating">
-                                <input type="text" id="graduation_date" name="graduation_date"
-                                       value="{{ old('graduation_date') }}" class="form-control month-year-picker"
-                                       placeholder="اختر التاريخ" required>
-                                <label for="graduation_date">سنة الدراسة</label>
-                            </div>
-                            <div class="invalid-feedback text-right">الرجاء اختيار تاريخ التخرج.</div>
-                        </div>
-                    </div>
+{{--                    <div class="form-group mb-3">--}}
+{{--                        <div class="input-group has-validation">--}}
+{{--                            <span class="input-group-text"><i class="fas fa-calendar"></i></span>--}}
+{{--                            <div class="form-floating">--}}
+{{--                                <input type="text" id="graduation_date" name="graduation_date"--}}
+{{--                                       value="{{ old('graduation_date') }}" class="form-control month-year-picker"--}}
+{{--                                       placeholder="اختر التاريخ" required>--}}
+{{--                                <label for="graduation_date">سنة الدراسة</label>--}}
+{{--                            </div>--}}
+{{--                            <div class="invalid-feedback text-right">الرجاء اختيار تاريخ التخرج.</div>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
 
                     <!-- Heard About Section -->
                     <div class="form-group mb-3">

@@ -14,7 +14,8 @@ class Invitations extends Model
         'first_name', 'second_name', 'sur_name', 'age_range', 'national_id',
         'email', 'phone_number', 'university_name', 'university_specialization', 'team_leader',
         'graduation_date', 'heard_about', 'reason_participation', 'attended', 'invitation_key', 'type',
-        'is_email_send', 'is_invited', 'attendance_dates',
+        'is_email_send', 'is_invited', 'attendance_dates', 'nationality', 'card_type', 'region',
+        'city', 'academic_qualifications', 'employer',
     ];
 
     protected $casts = [

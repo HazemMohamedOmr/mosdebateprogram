@@ -28,14 +28,19 @@ class VisitorInvitationRequest extends FormRequest
             'second_name' => 'required|string|max:255',
             'sur_name' => 'required|string|max:255',
             'age_range' => 'required|string',
-            'national_id' => 'required|string|size:10',
+            'national_id' => 'required|string',
             'email' => 'required|email|max:255',
             'phone_number' => 'required|string|max:15',
-            'university_name' => 'nullable|string|max:255',
-            'university_specialization' => 'nullable|string|max:255',
-            'graduation_date' => 'required|date_format:Y-m',
+            'university_name' => 'required|string|max:255',
+            'university_specialization' => 'required|string|max:255',
             'heard_about' => 'nullable|array',
             'reason_participation' => 'nullable|array',
+            'nationality' => 'required|string|max:255',
+            'card_type' => 'required|boolean',
+            'region' => 'required|string|max:255',
+            'city' => 'required|string|max:255',
+            'academic_qualifications' => 'required|string|max:255',
+            'employer' => 'required|string|max:255',
         ];
     }
 
@@ -46,7 +51,7 @@ class VisitorInvitationRequest extends FormRequest
             'second_name' => 'الاسم الثاني',
             'sur_name' => 'اسم العائلة',
             'age_range' => 'الفئة العمرية',
-            'national_id' => 'رقم الهوية الوطنية',
+            'national_id' => 'رقم الهوية الوطنية/ رقم الجواز',
             'email' => 'البريد الالكتروني',
             'phone_number' => 'رقم الهاتف',
             'university_name' => 'اسم الجامعة',
@@ -54,6 +59,12 @@ class VisitorInvitationRequest extends FormRequest
             'graduation_date' => 'سنة الدراسة',
             'heard_about' => 'سمعت عنا',
             'reason_participation' => 'رغبة الحضور',
+            'nationality' => 'الجنسية',
+            'card_type' => 'نوع البطاقة',
+            'region' => 'المنطقة',
+            'city' => 'المدينة',
+            'academic_qualifications' => 'المؤهلات العلمية',
+            'employer' => 'جهة العمل',
         ];
     }
 
