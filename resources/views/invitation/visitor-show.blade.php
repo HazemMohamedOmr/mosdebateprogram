@@ -37,29 +37,40 @@
                     @if ($invitation->type === 0)
                         <!-- Type 0: Display Specific Attributes -->
                         <div class="row">
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <p>
                                     <strong>الاسم:</strong> {{ $invitation->first_name }} {{ $invitation->second_name }} {{ $invitation->sur_name }}
                                 </p>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-6">
                                 <p><strong>الفئة العمرية:</strong> {{ $invitation->age_range }}</p>
                             </div>
-                            <div class="col-md-4">
-                                <p><strong>رقم الهوية الوطنية:</strong> {{ $invitation->national_id }}</p>
-                            </div>
                         </div>
+                        @isset($invitation->card_type)
+                            <p><strong>الجنسية:</strong> {{ $invitation->nationality }}</p>
+                            <p><strong>نوع البطاقة:</strong> {{ $invitation->card_type ? 'جواز السفر' : 'بطاقة الرقم القومى' }}</p>
+                        @endisset
+                        <p><strong>{{ $invitation->card_type ? 'رقم جواز السفر' : 'رقم الهوية الوطنية' }}:</strong> {{ $invitation->national_id }}</p>
                         <p><strong>البريد الإلكتروني:</strong> {{ $invitation->email }}</p>
                         <p><strong>رقم الهاتف:</strong> {{ $invitation->phone_number }}</p>
+                        @isset($invitation->region)
+                            <p><strong>المنطقة:</strong> {{ $invitation->region }}</p>
+                            <p><strong>المدينة:</strong> {{ $invitation->city }}</p>
+                            <p><strong>المؤهلات العلمية:</strong> {{ $invitation->academic_qualifications }}</p>
+                        @endisset
                         <p><strong>اسم الجامعة:</strong> {{ $invitation->university_name }}</p>
                         <p><strong>التخصص الجامعي:</strong> {{ $invitation->university_specialization }}</p>
-                        <p><strong>تاريخ التخرج:</strong> {{ $invitation->graduation_date }}</p>
-                        <p><strong>كيف سمعت عن
-                                البرنامج:</strong> {{ implode(', ', json_decode($invitation->heard_about, true) ?? []) }}
-                        </p>
-                        <p><strong>سبب
-                                الحضور:</strong> {{ implode(', ', json_decode($invitation->reason_participation, true) ?? []) }}
-                        </p>
+{{--                        <p><strong>تاريخ التخرج:</strong> {{ $invitation->graduation_date }}</p>--}}
+                        @if(implode(', ', json_decode($invitation->heard_about, true) ?? []))
+                            <p><strong>كيف سمعت عن
+                                    البرنامج:</strong> {{ implode(', ', json_decode($invitation->heard_about, true) ?? []) }}
+                            </p>
+                        @endif
+                        @if(implode(', ', json_decode($invitation->reason_participation, true) ?? []))
+                            <p><strong>سبب
+                                    الحضور:</strong> {{ implode(', ', json_decode($invitation->reason_participation, true) ?? []) }}
+                            </p>
+                        @endif
                     @elseif ($invitation->type === 1)
                         <!-- Type 1: Display Attributes and Students -->
                         <p><strong>اسم الجامعة:</strong> {{ $invitation->university_name }}</p>
