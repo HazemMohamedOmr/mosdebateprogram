@@ -113,7 +113,7 @@
                             <div class="form-floating">
                                 <select id="card_type" name="card_type" class="form-select" required>
                                     <option value="" disabled selected>اختر نوع البطاقة</option>
-                                    <option value="0">بطاقة الهوية الوطنية</option>
+                                    <option value="0">بطاقة الهوية الوطنية/ الإقامة</option>
                                     <option value="1 ">جواز السفر</option>
                                 </select>
                                 <label for="card_type">نوع البطاقة <span class="mandatory">*</span></label>
@@ -130,8 +130,8 @@
                             <div class="form-floating">
                                 <input type="text" id="national_id" name="national_id"
                                        value="{{ old('national_id') }}" class="form-control"
-                                       placeholder="رقم الهوية الوطنية/ رقم الجواز" required>
-                                <label for="national_id">رقم الهوية الوطنية/ رقم الجواز <span class="mandatory">*</span></label>
+                                       placeholder="رقم الهوية الوطنية/ الإقامة/ رقم الجواز" required>
+                                <label for="national_id">رقم الهوية الوطنية/ الإقامة/ رقم الجواز <span class="mandatory">*</span></label>
                             </div>
                             <div class="invalid-feedback text-right">الرجاء إدخال رقم الهوية/ رقم الجواز.</div>
                         </div>
