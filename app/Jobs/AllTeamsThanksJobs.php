@@ -32,14 +32,14 @@ class AllTeamsThanksJobs implements ShouldQueue
     public function handle()
     {
         $leaders = $this->getLeaders();
-        $leaders = $this->testsEmails();
+//        $leaders = $this->testsEmails();
 
         foreach ($leaders as $leader) {
             TeamsThanksJobs::dispatch($leader);
         }
 
         $students = $this->getStudents();
-        $students = $this->testsEmails();
+//        $students = $this->testsEmails();
 
         foreach ($students as $student) {
             TeamsThanksJobs::dispatch($student);
