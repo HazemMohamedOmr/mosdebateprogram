@@ -95,7 +95,7 @@
                     <!-- Nationality -->
                     <div class="form-group mb-3">
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                            <span class="input-group-text"><i class="fas fa-globe"></i></span>
                             <div class="form-floating">
                                 <input type="text" id="nationality" name="nationality"
                                        value="{{ old('nationality') }}" class="form-control"
@@ -126,7 +126,7 @@
                     <!-- National ID -->
                     <div class="form-group mb-3">
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                            <span class="input-group-text"><i class="fa fa-id-badge"></i></span>
                             <div class="form-floating">
                                 <input type="text" id="national_id" name="national_id"
                                        value="{{ old('national_id') }}" class="form-control"
@@ -140,7 +140,7 @@
                     <!--Region -->
                     <div class="form-group mb-3">
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                            <span class="input-group-text"><i class="fas fa-map-marker-alt"></i></span>
                             <div class="form-floating">
                                 <input type="text" id="region" name="region"
                                        value="{{ old('region') }}" class="form-control"
@@ -154,7 +154,7 @@
                     <!-- City -->
                     <div class="form-group mb-3">
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-id-card"></i></span>
+                            <span class="input-group-text"><i class="fas fa-city" style="font-size: 0.8rem;"></i></span>
                             <div class="form-floating">
                                 <input type="text" id="city" name="city"
                                        value="{{ old('city') }}" class="form-control"
@@ -193,7 +193,7 @@
                     <!-- Academic Qualifications -->
                     <div class="form-group mb-3">
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-building"></i></span>
+                            <span class="input-group-text"><i class="fas fa-book"></i></span>
                             <div class="form-floating">
                                 <input type="text" id="academic_qualifications" name="academic_qualifications"
                                        value="{{ old('academic_qualifications') }}" class="form-control" placeholder="المؤهلات العلمية" required>
@@ -217,7 +217,7 @@
                     <!-- University Specialization -->
                     <div class="form-group mb-3">
                         <div class="input-group has-validation">
-                            <span class="input-group-text"><i class="fas fa-book"></i></span>
+                            <span class="input-group-text" style="padding: 0.375rem 0.6rem;"><i class="fas fa-graduation-cap"></i></span>
                             <div class="form-floating">
                                 <input type="text" id="university_specialization" name="university_specialization"
                                        value="{{ old('university_specialization') }}" class="form-control"
