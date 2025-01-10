@@ -30,8 +30,8 @@ class AllVisitorsThanksJobs implements ShouldQueue
      */
     public function handle()
     {
-//        $visitors = $this->getVisitors();
-        $visitors = $this->testsEmails();
+        $visitors = $this->getVisitors();
+//        $visitors = $this->testsEmails();
 
         foreach ($visitors as $visitor) {
             VisitorsThanksJobs::dispatch($visitor);
