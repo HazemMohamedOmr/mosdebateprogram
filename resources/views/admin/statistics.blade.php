@@ -3,10 +3,10 @@
         <div class="card">
             <div class="card-header pb-0">
                 <div class="row mb-3">
-                    <div class="col-6 d-flex justify-content-between align-items-center">
+                    <div class="col-4 col-md-6 d-flex justify-content-between align-items-center">
                         <h6>الاحصائيات</h6>
                     </div>
-                    <div class="col-6 d-flex justify-content-between align-items-center">
+                    <div class="col-8 col-md-6 d-flex justify-content-center justify-content-md-between align-items-center flex-wrap">
                         <div class="ms-2">
                             <a class="btn btn-primary btn-icon" href="{{ route('admin.visitors.thanks-mail') }}">
                                 <i class="material-icons">mail</i>
