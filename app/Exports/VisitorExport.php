@@ -56,7 +56,7 @@ class VisitorExport implements FromCollection, WithHeadings, WithStyles
                 'graduation_date' => $item->graduation_date,
 
                 'nationality' => $item->nationality,
-                'card_type' => $item->card_type ? 'جواز السفر' : 'بطاقة الهوية الوطنية',
+                'card_type' => $item->card_type ? 'جواز السفر' : 'الهوية الوطنية/ الإقامة',
                 'region' => $item->region,
                 'city' => $item->city,
                 'academic_qualifications' => $item->academic_qualifications,

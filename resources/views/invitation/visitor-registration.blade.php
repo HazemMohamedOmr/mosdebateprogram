@@ -113,7 +113,7 @@
                             <div class="form-floating">
                                 <select id="card_type" name="card_type" class="form-select" required>
                                     <option value="" disabled selected>اختر نوع البطاقة</option>
-                                    <option value="0">بطاقة الهوية الوطنية/ الإقامة</option>
+                                    <option value="0">الهوية الوطنية/ الإقامة</option>
                                     <option value="1 ">جواز السفر</option>
                                 </select>
                                 <label for="card_type">نوع البطاقة <span class="mandatory">*</span></label>
