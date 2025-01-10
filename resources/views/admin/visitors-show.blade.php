@@ -34,9 +34,9 @@
                             </div>
                             @isset($invitation->card_type)
                                 <p><strong>الجنسية:</strong> {{ $invitation->nationality }}</p>
-                                <p><strong>نوع البطاقة:</strong> {{ $invitation->card_type ? 'جواز السفر' : 'بطاقة الهوية الوطنية' }}</p>
+                                <p><strong>نوع البطاقة:</strong> {{ $invitation->card_type ? 'جواز السفر' : 'بطاقة الهوية الوطنية/ الإقامة' }}</p>
                             @endisset
-                            <p><strong>{{ $invitation->card_type ? 'رقم جواز السفر' : 'رقم الهوية الوطنية' }}:</strong> {{ $invitation->national_id }}</p>
+                            <p><strong>{{ $invitation->card_type ? 'رقم جواز السفر' : 'رقم الهوية الوطنية/ الإقامة' }}:</strong> {{ $invitation->national_id }}</p>
                             <p><strong>البريد الإلكتروني:</strong> {{ $invitation->email }}</p>
                             <p><strong>رقم الهاتف:</strong> {{ $invitation->phone_number }}</p>
                             @isset($invitation->region)

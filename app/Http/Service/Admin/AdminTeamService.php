@@ -39,7 +39,8 @@ class AdminTeamService
                     $query->where('email', 'LIKE', "%$searchTerm%")
                         ->orWhere('first_name', 'LIKE', "%$searchTerm%")
                         ->orWhere('second_name', 'LIKE', "%$searchTerm%")
-                        ->orWhere('sur_name', 'LIKE', "%$searchTerm%");
+                        ->orWhere('sur_name', 'LIKE', "%$searchTerm%")
+                        ->orWhere('university_name', 'LIKE', "%$searchTerm%");
                 });
             })->with('students')->paginate(10);
 

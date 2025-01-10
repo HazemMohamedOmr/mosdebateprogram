@@ -26,7 +26,7 @@
                                 <div class="ms-2 search-fun">
                                     <form method="GET" action="{{ route('admin.register') }}" class="d-flex">
                                         <div class="flex-grow-1">
-                                            <input type="text" name="search" class="form-control me-2 search-input" placeholder="بحث بالاسم أو البريد الإلكتروني" value="{{ request('search') }}">
+                                            <input type="text" name="search" class="form-control me-2 search-input" placeholder="بحث بالاسم أو البريد الإلكتروني أو اسم الجامعة" value="{{ request('search') }}">
                                         </div>
                                         <button type="submit" class="btn btn-primary me-3">يحث</button>
                                     </form>

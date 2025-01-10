@@ -68,7 +68,7 @@ class StudentInvitationRequest extends FormRequest
             'students.*.second_name' => 'الاسم الثاني',
             'students.*.sur_name' => 'اسم العائلة',
             'students.*.age_range' => 'الفئة العمرية',
-            'students.*.national_id' => 'رقم الهوية الوطنية',
+            'students.*.national_id' => 'رقم الهوية الوطنية/ الإقامة',
             'students.*.email' => 'البريد الالكتروني',
             'students.*.phone_number' => 'رقم الهاتف',
             'students.*.study_year_program' => 'سنة الدراسة/البرنامج',

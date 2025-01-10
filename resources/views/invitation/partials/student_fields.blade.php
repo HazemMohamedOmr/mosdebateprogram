@@ -84,8 +84,8 @@
     <div class="input-group has-validation">
         <span class="input-group-text"><i class="fas fa-id-card"></i></span>
         <div class="form-floating">
-            <input type="text" id="national_id_{{ $studentIndex }}" maxlength="10" minlength="10" name="students[{{ $studentIndex }}][national_id]" value="{{ old('students.' . $studentIndex . '.national_id') }}" class="form-control" placeholder="رقم الهوية الوطنية" required>
-            <label for="national_id_{{ $studentIndex }}">رقم الهوية الوطنية <span class="mandatory">*</span></label>
+            <input type="text" id="national_id_{{ $studentIndex }}" maxlength="10" minlength="10" name="students[{{ $studentIndex }}][national_id]" value="{{ old('students.' . $studentIndex . '.national_id') }}" class="form-control" placeholder="رقم الهوية الوطنية/ الإقامة" required>
+            <label for="national_id_{{ $studentIndex }}">رقم الهوية الوطنية/ الإقامة <span class="mandatory">*</span></label>
         </div>
         <div class="invalid-feedback text-right">الرجاء إدخال رقم الهوية.</div>
     </div>
