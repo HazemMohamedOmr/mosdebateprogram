@@ -20,7 +20,10 @@ class VisitorExport implements FromCollection, WithHeadings, WithStyles
             ->select([
                 'first_name', 'second_name', 'sur_name', 'age_range', 'national_id',
                 'email', 'phone_number', 'university_name', 'university_specialization',
-                'graduation_date', 'heard_about', 'reason_participation', 'attendance_dates'
+                'graduation_date',
+                'nationality', 'card_type', 'region',
+                'city', 'academic_qualifications', 'employer',
+                'heard_about', 'reason_participation', 'attendance_dates'
             ])->get();
 
         return $visitors->map(function ($item) {
@@ -51,6 +54,14 @@ class VisitorExport implements FromCollection, WithHeadings, WithStyles
                 'university_name' => $item->university_name,
                 'university_specialization' => $item->university_specialization,
                 'graduation_date' => $item->graduation_date,
+
+                'nationality' => $item->nationality,
+                'card_type' => $item->card_type ? 'جواز السفر' : 'بطاقة الهوية الوطنية',
+                'region' => $item->region,
+                'city' => $item->city,
+                'academic_qualifications' => $item->academic_qualifications,
+                'employer' => $item->employer,
+
                 'heard_about' => implode(', ', $heard_about ?? []),
                 'reason_participation' => implode(', ', $reason_participation ?? []),
                 'attendance_dates' => implode(', ', $item->attendance_dates ?? []),
@@ -65,12 +76,20 @@ class VisitorExport implements FromCollection, WithHeadings, WithStyles
             'الاسم الثاني',
             'اسم العائلة',
             'الفئة العمرية',
-            'رقم الهوية الوطنية',
+            'رقم الهوية الوطنية/رقم الجواز',
             'البريد الإلكتروني',
             'رقم الهاتف',
             'اسم الجامعة',
             'التخصص الجامعي',
             'تاريخ التخرج',
+
+            'nationality' => 'الجنسية',
+            'card_type' => 'نوع البطاقة',
+            'region' => 'المنطقة',
+            'city' => 'المدينة',
+            'academic_qualifications' => 'المؤهلات العلمية',
+            'employer' => 'جهة العمل',
+
             'كيف سمعت عن البرنامج',
             'سبب الحضور',
             'أيام الحضور',
