@@ -10,14 +10,14 @@
 </div>
 
 <h1 style="text-align: right; margin-top: 0"> أهلا {{ $invitation['first_name'] }}  </h1>
-<p style="text-align: center !important; font-size: 1rem !important;">شكرًا لتسجيلكم لحضور دوري مناظرات وزارة الرياضة</p>
 
-<p style="text-align: center !important; font-size: 1rem !important;">نشكر لكم اهتمامكم وتسجيلكم لحضور برنامج دوري مناظرات وزارة الرياضة.</p>
+<p style="text-align: center !important; font-size: 1rem !important;">
+    نتطلع إلى لقائكم قريبًا في دوري مناظرات وزارة الرياضة 2025!
+</p>
 
-<p style="text-align: center !important; font-size: 1rem !important;">نتطلع لاستقبالكم في الحدث والاستمتاع معًا بمنافسات حوارية مميزة تعكس روح
-    التفكير النقدي والحوار البنّاء.</p>
-
-<p style="text-align: left; font-size: 1rem;">نراكم قريبًا!</p>
+<p style="text-align: center !important; font-size: 1rem !important;">
+    يرجى الضغط على الرابط أدناه للحصول على رمز الاستجابة السريع (QR Code) الخاص ببطاقة الدخول إلى الفعالية:
+</p>
 
 <div style="text-align: center !important;">
     <a style="display: inline-block;
@@ -37,8 +37,14 @@
     border-radius: 0.5rem;
     background-color: #0d6efd;
     transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
-" target="_blank" href="{{ $link }}">رابط الدعوة</a>
+" target="_blank" href="{{ $link }}">
+        اضغط هنا للحصول على بطاقة الدخول
+    </a>
 </div>
+
+<p style="text-align: center !important; font-size: 1rem !important;">
+    يرجى الاحتفاظ بالرمز وإبرازه عند الوصول إلى موقع الدوري لتسهيل عملية الدخول.
+</p>
 
 </body>
 </html>
