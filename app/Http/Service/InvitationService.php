@@ -142,4 +142,12 @@ class InvitationService
         return view('invitation.visitor-show', compact('invitation'));
     }
 
+    public function formQrcode()
+    {
+        $url = route('visitor-invitation-form');
+        $image = $this->generateBase64QrCode($url);
+
+        return view('invitation.qrcode', compact('image'));
+    }
+
 }
