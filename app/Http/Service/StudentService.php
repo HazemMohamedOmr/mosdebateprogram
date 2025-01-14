@@ -149,4 +149,13 @@ class StudentService
         return view('invitation.student-show', compact('student'));
     }
 
+    public function formQrcode()
+    {
+        $url = route('team-invitation-form');
+        $image = $this->generateBase64QrCode($url);
+        $title = "نموذج المشاركين";
+
+        return view('invitation.form-qrcode', compact('image', 'title'));
+    }
+
 }

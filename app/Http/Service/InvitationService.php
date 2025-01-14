@@ -146,8 +146,9 @@ class InvitationService
     {
         $url = route('visitor-invitation-form');
         $image = $this->generateBase64QrCode($url);
+        $title = "نموذج حضور";
 
-        return view('invitation.qrcode', compact('image'));
+        return view('invitation.form-qrcode', compact('image', 'title'));
     }
 
 }

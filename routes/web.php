@@ -46,6 +46,9 @@ Route::prefix('register')->group(function () {
     Route::get('/qrcode/{uuid}', [StudentController::class, 'qrcode'])->name('team-invitation-qrcode');
 });
 
+Route::get('register-qrcode', [StudentController::class, 'formQrcode'])->name('team-invitation-form-qrcode');
+
+
 
 Route::get('visitor-info/{uuid}', [InvitationController::class, 'show'])->name('visitor-invitation-show');
 Route::get('student-info/{uuid}', [StudentController::class, 'show'])->name('student-invitation-show');

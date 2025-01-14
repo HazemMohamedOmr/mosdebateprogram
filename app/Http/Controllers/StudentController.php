@@ -41,4 +41,8 @@ class StudentController extends Controller
         return $this->studentService->show($uuid);
     }
 
+    public function formQrcode(Request $request)
+    {
+        return $this->studentService->formQrcode();
+    }
 }
