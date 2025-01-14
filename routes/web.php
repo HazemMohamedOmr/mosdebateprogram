@@ -33,6 +33,8 @@ Route::prefix('visitor')->group(function () {
     Route::get('/qrcode/{uuid}', [InvitationController::class, 'qrcode'])->name('visitor-invitation-qrcode');
 });
 
+Route::get('visitor-qrcode', [InvitationController::class, 'formQrcode'])->name('visitor-invitation-form-qrcode');
+
 
 Route::prefix('register')->group(function () {
     Route::get('/', [StudentController::class, 'index'])->name('team-invitation-form');
