@@ -328,7 +328,7 @@
 
     @if ($formClosed)
         <div class="d-flex justify-content-center align-items-center vh-100">
-            <img src="{{ asset('images/public.png') }}" alt="Logo">
+            <img src="{{ asset('images/public.png') }}" alt="Logo" class="img-fluid">
         </div>
         <script>
             document.addEventListener('DOMContentLoaded', function () {

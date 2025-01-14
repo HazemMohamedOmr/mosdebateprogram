@@ -6,6 +6,7 @@
             <form id="logout-form" method="POST" action="{{ route('admin.logout') }}" style="display: none;">
                 @csrf
             </form>
+            <img src="{{ asset('images/public.png') }}" class="d-xl-none" style="width: 55px;transform: scale(2.9);" alt="main_logo">
             <ul class="navbar-nav me-auto ms-0 justify-content-end">
                 <li class="nav-item d-flex align-items-center">
                     <a href="javascript:;" class="nav-link text-body font-weight-bold px-0 d-flex justify-content-center"
