@@ -62,6 +62,13 @@ class AdminTeamService
     {
         $invitation = Invitations::find($id);
 
+//        $invitation->students()->delete();
+
+        $students = Student::where('invitations_id', $id)->get();
+        foreach ($students as $student){
+            $student->delete();
+        }
+
         $invitation->delete();
 
         return redirect()->route('admin.register')->with('event_date_success', 'تم الحذف بنجاح');
