@@ -76,6 +76,28 @@
             dateFormat: "Y-m-d",
             locale: "ar"
         });
+
+        // Get the current hash from the URL
+        let hash = window.location.hash;
+
+        // If there's a hash, activate the corresponding tab
+        if (hash) {
+            let tabLink = document.querySelector(`button[data-bs-target="${hash}"]`);
+            if (tabLink) {
+                tabLink.click(); // Activate the tab
+            }
+        }
+
+        // Update the URL hash when a tab is clicked
+        let tabButtons = document.querySelectorAll('.nav-tabs button[data-bs-toggle="tab"]');
+        if(tabButtons){
+            tabButtons.forEach(function (button) {
+                button.addEventListener('shown.bs.tab', function (event) {
+                    let target = event.target.getAttribute('data-bs-target');
+                    history.replaceState(null, null, target);
+                });
+            });
+        }
     });
 
     var ctx = document.getElementById("chart-bars").getContext("2d");

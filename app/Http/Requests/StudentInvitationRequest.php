@@ -42,7 +42,7 @@ class StudentInvitationRequest extends FormRequest
             'students.*.gender' => 'nullable|boolean',
             'students.*.personal_photo' => 'nullable|file|image|max:2048',
             'students.*.age_range' => 'required|string|max:255',
-            'students.*.national_id' => 'required|string|size:10',
+            'students.*.national_id' => 'required|string',
             'students.*.phone_number' => 'required|string|max:15',
             'students.*.study_year_program' => 'required|string|max:255',
             'students.*.experience' => 'nullable|string',

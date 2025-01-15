@@ -109,9 +109,12 @@ class AdminTeamService
 
     public function statistics($date)
     {
-        $invitations = Invitations::where('type', 1)->where('attendance_dates', 'LIKE', "%$date%")->paginate(10);
+        $invitations = Invitations::where('type', 1)
+            ->where('attendance_dates', 'LIKE', "%$date%")
+            ->paginate(10, ['*'], 'invitation_page');
 
-        $students = Student::where('attendance_dates', 'LIKE', "%$date%")->paginate(10);
+        $students = Student::where('attendance_dates', 'LIKE', "%$date%")
+            ->paginate(10, ['*'], 'student_page');
 
         return view('admin.team.register-statistics.register-statistics', compact('invitations', 'date', 'students'));
     }

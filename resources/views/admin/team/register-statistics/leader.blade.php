@@ -70,7 +70,10 @@
         </div>
     @endif
 
-    {{ $invitations->links() }}
+{{--    {{ $invitations->links() }}--}}
+    {{ $invitations->withQueryString()->fragment('team')->links() }}
+
+    {{--    {{ $invitations->appends(['date' => $date])->withPath(url()->current() . '#team')->links() }}--}}
 
 </div>
 

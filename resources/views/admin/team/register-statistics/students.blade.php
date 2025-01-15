@@ -54,7 +54,11 @@
         </div>
     @endif
 
-    {{ $students->links() }}
+{{--    {{ $students->links() }}--}}
+    {{ $students->withQueryString()->fragment('student')->links() }}
+
+    {{--    {{ $students->appends(['date' => $date])->withPath(url()->current() . '#student')->links() }}--}}
+
 
 </div>
 
