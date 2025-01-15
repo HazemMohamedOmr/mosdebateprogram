@@ -39,8 +39,10 @@
                             @if($invitation->attended)
                                 <p><strong>أيام الحضور:</strong> {{ implode(', ', $invitation->attendance_dates ?? []) }}</p>
                             @endif
-                            <p><strong>رقم الدعوة:</strong>
-                                <a href="{{ route('visitor-invitation-qrcode', ['uuid' => $invitation->invitation_key]) }}" target="_blank">
+                            <p><strong>رابط الدعوة:</strong>
+                                <a href="{{ route('visitor-invitation-qrcode', ['uuid' => $invitation->invitation_key]) }}"
+                                   style="color: #e91e63; text-decoration: underline; font-weight: bold; transition: color 0.3s ease;"
+                                   class="text-center" target="_blank">
                                     {{ $invitation->invitation_key }}
                                 </a>
                             </p>
@@ -76,8 +78,10 @@
                                                         <p><strong>أيام الحضور:</strong> {{ implode(', ', $student->attendance_dates ?? []) }}</p>
                                                     @endif
                                                     @if($student->is_invited)
-                                                        <p><strong>رقم الدعوة:</strong>
-                                                            <a href="{{ route('team-invitation-qrcode', ['uuid' => $student->invitation_key]) }}" target="_blank">
+                                                        <p><strong>رابط الدعوة:</strong>
+                                                            <a href="{{ route('team-invitation-qrcode', ['uuid' => $student->invitation_key]) }}"
+                                                               style="color: #e91e63; text-decoration: underline; font-weight: bold; transition: color 0.3s ease; display: block"
+                                                               target="_blank">
                                                                 {{ $student->invitation_key }}
                                                             </a>
                                                         </p>
