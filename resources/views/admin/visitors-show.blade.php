@@ -61,6 +61,7 @@
                             @if($invitation->attended)
                                 <p><strong>أيام الحضور:</strong> {{ implode(', ', $invitation->attendance_dates ?? []) }}</p>
                             @endif
+                            <p><strong>رقم الدعوة:</strong> {{ $invitation->invitation_key }}</p>
                         </div>
 
                     </div>

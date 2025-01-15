@@ -39,6 +39,7 @@
                             @if($invitation->attended)
                                 <p><strong>أيام الحضور:</strong> {{ implode(', ', $invitation->attendance_dates ?? []) }}</p>
                             @endif
+                            <p><strong>رقم الدعوة:</strong> {{ $invitation->invitation_key }}</p>
 
 
                             <div class="row">
@@ -69,6 +70,9 @@
                                                     <p><strong>حضور:</strong> {{ $student->attend ? 'نعم' : 'لا' }}</p>
                                                     @if($student->attend)
                                                         <p><strong>أيام الحضور:</strong> {{ implode(', ', $student->attendance_dates ?? []) }}</p>
+                                                    @endif
+                                                    @if($student->is_invited)
+                                                        <p><strong>رقم الدعوة:</strong> {{ $student->invitation_key }}</p>
                                                     @endif
                                                 </div>
                                             </div>
