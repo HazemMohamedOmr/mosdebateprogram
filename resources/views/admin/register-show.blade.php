@@ -39,7 +39,11 @@
                             @if($invitation->attended)
                                 <p><strong>أيام الحضور:</strong> {{ implode(', ', $invitation->attendance_dates ?? []) }}</p>
                             @endif
-                            <p><strong>رقم الدعوة:</strong> {{ $invitation->invitation_key }}</p>
+                            <p><strong>رقم الدعوة:</strong>
+                                <a href="{{ route('visitor-invitation-qrcode', ['uuid' => $invitation->invitation_key]) }}" target="_blank">
+                                    {{ $invitation->invitation_key }}
+                                </a>
+                            </p>
 
 
                             <div class="row">
@@ -72,7 +76,11 @@
                                                         <p><strong>أيام الحضور:</strong> {{ implode(', ', $student->attendance_dates ?? []) }}</p>
                                                     @endif
                                                     @if($student->is_invited)
-                                                        <p><strong>رقم الدعوة:</strong> {{ $student->invitation_key }}</p>
+                                                        <p><strong>رقم الدعوة:</strong>
+                                                            <a href="{{ route('team-invitation-qrcode', ['uuid' => $student->invitation_key]) }}" target="_blank">
+                                                                {{ $student->invitation_key }}
+                                                            </a>
+                                                        </p>
                                                     @endif
                                                 </div>
                                             </div>

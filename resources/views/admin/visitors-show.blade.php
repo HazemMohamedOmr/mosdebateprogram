@@ -61,7 +61,11 @@
                             @if($invitation->attended)
                                 <p><strong>أيام الحضور:</strong> {{ implode(', ', $invitation->attendance_dates ?? []) }}</p>
                             @endif
-                            <p><strong>رقم الدعوة:</strong> {{ $invitation->invitation_key }}</p>
+                            <p><strong>رقم الدعوة:</strong>
+                                <a href="{{ route('visitor-invitation-qrcode', ['uuid' => $invitation->invitation_key]) }}" target="_blank">
+                                    {{ $invitation->invitation_key }}
+                                </a>
+                            </p>
                         </div>
 
                     </div>
